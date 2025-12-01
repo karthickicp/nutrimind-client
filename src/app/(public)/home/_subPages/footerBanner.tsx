@@ -3,7 +3,7 @@ import React from "react";
 
 export const FooterBanner = () => {
   return (
-    <section className="container mx-auto py-16 lg:py-24">
+    <section className="container">
       <div className="space-y-8">
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-semibold md:leading-16 text-[#D9D9D9]">

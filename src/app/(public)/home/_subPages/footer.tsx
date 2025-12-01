@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="container mx-auto py-16 lg:py-24">
+    <footer className="container">
       <div className="flex flex-col md:flex-row justify-between items-center">
         {/* Left - Brand */}
         <div className="text-center md:text-left">

@@ -2,7 +2,7 @@ import React from "react";
 
 export const Testimonials = () => {
   return (
-    <section className="container mx-auto py-16 lg:py-24">
+    <section className="container ">
       <div className="space-y-12">
         {/* Header */}
         <div>
