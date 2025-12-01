@@ -2,10 +2,11 @@
 
 import { useFormik } from "formik";
 import FormLayout from "../../layout/formLayout";
-import { FormField } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { SelectBox } from "@/components/common/selectBox";
 import { SelectItem } from "@radix-ui/react-select";
+import { FormField } from "@/components/ui/label";
+import Select from "@/components/ui/select";
 
 export const dropdownBoxOptions = [
   { label: "Male", value: "male" },
@@ -26,7 +27,7 @@ type DietPlannerFormikDataProps = {
 };
 
 const DietPlanner = () => {
-  const { handleSubmit, values, setFieldValue, handleChange } =
+  const { handleSubmit, values, setFieldValue, handleChange, touched, errors } =
     useFormik<DietPlannerFormikDataProps>({
       initialValues: {
         firstName: "",
@@ -83,15 +84,15 @@ const DietPlanner = () => {
             />
           </FormField>
 
-          <FormField label="Gender" className="min-w-0">
-            <SelectBox defaultValue="male">
-              {dropdownBoxOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectBox>
-          </FormField>
+          <Select
+            title="Gender"
+            placeholder="Select gender"
+            options={dropdownBoxOptions}
+            value={values.gender}
+            getOptionLabel={(item: any) => item?.value}
+            onSelect={(value) => setFieldValue("gender", value)}
+            errorText={touched.gender && errors.gender ? errors.gender : ""}
+          />
 
           <FormField label="Height" className="min-w-0">
             <Input
@@ -110,25 +111,26 @@ const DietPlanner = () => {
 
         {/* Row: Goal, Diet Type, Cuisine */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <FormField label="Goal">
-            <SelectBox defaultValue="weight-loss">
-              {dropdownBoxOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectBox>
-          </FormField>
-
-          <FormField label="Diet Type">
-            <SelectBox defaultValue="non-veg">
-              {dropdownBoxOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectBox>
-          </FormField>
+          <Select
+            title="Goal"
+            placeholder="Select goal"
+            options={dropdownBoxOptions}
+            value={values.goal}
+            getOptionLabel={(item: any) => item?.value}
+            onSelect={(value) => setFieldValue("goal", value)}
+            errorText={touched.goal && errors.goal ? errors.goal : ""}
+          />
+          <Select
+            title="Diet Type"
+            placeholder="Select diet type"
+            options={dropdownBoxOptions}
+            value={values.dietType}
+            getOptionLabel={(item: any) => item?.value}
+            onSelect={(value) => setFieldValue("dietType", value)}
+            errorText={
+              touched.dietType && errors.dietType ? errors.dietType : ""
+            }
+          />
 
           <FormField label="Cuisine">
             <Input

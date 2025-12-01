@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
+import * as React from "react";
+import * as LabelPrimitive from "@radix-ui/react-label";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Label({
   className,
@@ -18,7 +18,16 @@ function Label({
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { Label }
+function FormField({ label, children, className = "" }: any) {
+  return (
+    <div className={`min-w-0 ${className}`}>
+      <Label className="text-sm text-white/80 mb-2 block">{label}</Label>
+      {children}
+    </div>
+  );
+}
+
+export { Label, FormField };
