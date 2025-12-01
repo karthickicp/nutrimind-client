@@ -1,12 +1,11 @@
 "use client";
-import { FormField, Label } from "@/components/ui/label";
-import { SelectItem } from "@/components/ui/select";
-import { SelectBox } from "@/components/common/selectBox";
+import { FormField } from "@/components/ui/label";
 import FormLayout from "../../layout/formLayout";
 import { useFormik } from "formik";
 import { dropdownBoxOptions } from "../diet_planner/page";
 import { Input } from "@/components/ui/input";
 import { trainerConnectSchema } from "@/lib/validationSchema";
+import Select from "@/components/ui/select";
 
 type TrainerConnectFormikDataProps = {
   sleepHours: string;
@@ -17,7 +16,7 @@ type TrainerConnectFormikDataProps = {
 };
 
 export default function TrainerConnect() {
-  const { handleSubmit, handleChange, values } =
+  const { handleSubmit, handleChange, values, errors, touched, setFieldValue } =
     useFormik<TrainerConnectFormikDataProps>({
       initialValues: {
         sleepHours: "",
@@ -55,58 +54,66 @@ export default function TrainerConnect() {
 
           {/* Target Weight */}
           <div>
-            <Label className="text-md text-white/80 mb-2 block font-medium">
-              Stress Level
-            </Label>
-            <SelectBox defaultValue="60">
-              {dropdownBoxOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectBox>
+            <Select
+              title="Stress Level"
+              placeholder="Select stress level"
+              options={dropdownBoxOptions}
+              value={values.stressLevel}
+              getOptionLabel={(item: any) => item?.value}
+              onSelect={(value) => setFieldValue("stressLevel", value)}
+              errorText={
+                touched.stressLevel && errors.stressLevel
+                  ? errors.stressLevel
+                  : ""
+              }
+            />
           </div>
 
           {/* Timeframe */}
           <div>
-            <Label className="text-md text-white/80 mb-2 block font-medium">
-              Work Type
-            </Label>
-            <SelectBox defaultValue="2m">
-              {dropdownBoxOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectBox>
+            <Select
+              title="Work Type"
+              placeholder="Select work type"
+              options={dropdownBoxOptions}
+              value={values.workType}
+              getOptionLabel={(item: any) => item?.value}
+              onSelect={(value) => setFieldValue("workType", value)}
+              errorText={
+                touched.workType && errors.workType ? errors.workType : ""
+              }
+            />
           </div>
 
           {/* Activity Level */}
           <div>
-            <Label className="text-md text-white/80 mb-2 block font-medium">
-              Current Mood
-            </Label>
-            <SelectBox defaultValue="sedentary">
-              {dropdownBoxOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectBox>
+            <Select
+              title="Current Mood"
+              placeholder="Select current mood"
+              options={dropdownBoxOptions}
+              value={values.currentMood}
+              getOptionLabel={(item: any) => item?.value}
+              onSelect={(value) => setFieldValue("currentMood", value)}
+              errorText={
+                touched.currentMood && errors.currentMood
+                  ? errors.currentMood
+                  : ""
+              }
+            />
           </div>
 
           {/* Preferred Workout - full width on left column */}
           <div className="md:col-span-2 lg:col-span-1">
-            <Label className="text-md text-white/80 mb-2 block font-medium">
-              Diet Type
-            </Label>
-            <SelectBox defaultValue="gym">
-              {dropdownBoxOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectBox>
+            <Select
+              title="Diet Type"
+              placeholder="Select diet type"
+              options={dropdownBoxOptions}
+              value={values.dietType}
+              getOptionLabel={(item: any) => item?.value}
+              onSelect={(value) => setFieldValue("dietType", value)}
+              errorText={
+                touched.dietType && errors.dietType ? errors.dietType : ""
+              }
+            />
           </div>
         </div>
       </form>
