@@ -25,8 +25,8 @@ export const Header = () => {
         <Button
           variant="outline"
           className="hidden sm:inline-flex h-auto border-white/20 text-white hover:bg-white/10 py-4 px-4 cursor-pointer font-semibold min-w-[150px]"
-        >
-          Login / SignUp
+        ><a href="/auth/login" className="hover:underline">
+          Login </a>/<a href="/auth/signup" className="hover:underline">SignUp</a>
         </Button>
         <Button className="hidden sm:inline-flex h-auto bg-emerald-500 hover:bg-emerald-600 text-white py-4 px-4 cursor-pointer font-semibold min-w-[150px]">
           Join as Trainer / Nut
