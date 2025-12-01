@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export const Header = () => {
   return (
-    <header className="container mx-auto px-4 py-20 flex items-center justify-between">
+    <header className="container flex items-center justify-between">
       <div className="text-2xl font-bold">NutriMind</div>
 
       <div className="flex items-center gap-6">

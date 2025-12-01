@@ -10,7 +10,7 @@ import {
 
 export const RealtimeLearning = () => {
   return (
-    <section className=" container mx-auto py-16 lg:py-24">
+    <section className=" container ">
       <h2 className="text-3xl md:text-4xl lg:text-5xl mb-12 font-semibold max-w-[600px] leading-16 text-[#D1D1D6]">
         Smart nutrition meets real-time learning
       </h2>

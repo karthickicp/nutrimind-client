@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 export const TrainersPortal = () => {
   return (
-    <section className="container mx-auto py-8">
+    <section className="container">
       <div className="grid my-20 md:grid-cols-2 gap-25 items-center">
         <div className="space-y-8">
           <h4 className="text-5xl font-semibold">Trainers</h4>
