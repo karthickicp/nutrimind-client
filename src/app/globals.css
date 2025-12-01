@@ -127,22 +127,35 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-  .btn-primary {
-    @apply h-auto border-none bg-emerald-500 hover:bg-emerald-600 text-white cursor-pointer;
-  }
-  .btn-outline-primary {
-    @apply h-auto border-white/20 text-white hover:bg-white/10 cursor-pointer;
-  }
-  .img-full {
-    @apply w-full h-full;
-  }
-  .img-cover {
-    @apply object-cover;
-  }
-  .container {
-    @apply mx-auto px-4 py-4 md:py-16 lg:py-20;
-  }
-  .container-max {
-    @apply max-w-384 xl:max-w-410 mx-auto px-4 py-12 lg:py-20;
-  }
+}
+
+.btn-lg {
+  @apply h-12 md:h-14 lg:h-16 xl:h-[70px] md:text-xl tracking-wide px-5;
+}
+.btn-primary {
+  @apply bg-emerald-500 border-emerald-500 hover:bg-emerald-600 text-white cursor-pointer font-semibold;
+}
+.btn-secondary {
+  @apply bg-white/10 border-white/10 text-white hover:bg-white/30 font-semibold;
+}
+.btn-outline-primary {
+  @apply border-[#4F4B4B] text-white hover:bg-white/10 cursor-pointer bg-transparent;
+}
+.img-full {
+  @apply w-full h-full;
+}
+.img-cover {
+  @apply object-cover;
+}
+.container {
+  @apply mx-auto px-4 py-4 md:py-16 lg:py-20;
+}
+.container-max {
+  @apply max-w-384 xl:max-w-410 mx-auto px-4 py-12 lg:py-20;
+}
+.sub-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-semibold leading-10 md:leading-12 lg:leading-16 mb-6 md:mb-8 lg:mb-12;
+}
+.trainer-portal .trainer-portal-desc {
+  @apply md:text-xl lg:text-3xl text-white/50 leading-10 lg:leading-14 xl:max-w-130;
 }

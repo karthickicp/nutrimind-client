@@ -2,17 +2,15 @@ import { Button } from "@/components/ui/button";
 
 export const TrainersPortal = () => {
   return (
-    <section className="container">
-      <div className="grid my-20 md:grid-cols-2 gap-25 items-center">
-        <div className="space-y-8">
-          <h4 className="text-5xl font-semibold">Trainers</h4>
-          <p className="text-white/50 leading-14 text-3xl xl:max-w-130">
+    <section className="container trainer-portal">
+      <div className="grid my-20 md:grid-cols-2 gap-10 lg:gap-18 xl:gap-25 items-center">
+        <div className="space-y-4 md:space-y-8">
+          <h4 className="sub-title">Trainers</h4>
+          <p className="trainer-portal-desc">
             Assign meal + workout plans Track client progress in real-time Get
             AI recommendations for each trainee
           </p>
-          <Button className="h-auto bg-emerald-500 hover:bg-emerald-600 text-white cursor-pointer py-5 px-8 font-semibold text-lg rounded-lg tracking-wide">
-            Open Trainer Portal
-          </Button>
+          <Button className="btn-primary btn-lg">Open Trainer Portal</Button>
         </div>
         <div className="max-h-130 rounded-2xl overflow-hidden">
           <img
@@ -22,17 +20,17 @@ export const TrainersPortal = () => {
           />
         </div>
       </div>
-      <div className="grid my-20 md:grid-cols-2 gap-25 items-center">
-        <div className="max-h-130 rounded-2xl overflow-hidden">
+      <div className="grid my-20 md:grid-cols-2 gap-10 lg:gap-18 xl:gap-25 items-center">
+        <div className="max-h-130 rounded-2xl overflow-hidden order-2 md:order-1">
           <img
             src="/images/home/fitness_lover.png"
             alt=""
             className="img-full img-cover"
           />
         </div>
-        <div className="space-y-8">
-          <h4 className="text-5xl font-semibold">Fitness Lovers</h4>
-          <p className="text-white/50 leading-14 text-3xl xl:max-w-130">
+        <div className="space-y-4 md:space-y-8 order-1 md:order-2">
+          <h4 className="sub-title">Fitness Lovers</h4>
+          <p className="trainer-portal-desc">
             See what your trainer sees Understand your food impact Stay
             consistent with AI motivation
           </p>

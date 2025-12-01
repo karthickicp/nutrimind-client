@@ -19,9 +19,7 @@ export const HowItWorks = () => {
 
   return (
     <section className=" container">
-      <h2 className="text-3xl md:text-4xl lg:text-5xl mb-12 font-semibold">
-        How is it work?
-      </h2>
+      <h2 className={"sub-title"}>How is it work?</h2>
 
       <div className="grid md:grid-cols-3 gap-6 lg:gap-12">
         {options.map((option) => (
@@ -33,10 +31,10 @@ export const HowItWorks = () => {
                 className="w-full h-48 object-cover"
               />
             </div>
-            <h3 className="text-2xl font-semibold text-[#D1D1D6] mb-2">
+            <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-[#D1D1D6] mb-2">
               {option.title}
             </h3>
-            <p className="text-white opacity-50 text-xl">
+            <p className="text-white opacity-50 lg:text-xl">
               {option.description}
             </p>
           </div>

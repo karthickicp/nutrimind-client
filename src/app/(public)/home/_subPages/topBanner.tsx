@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Search } from "lucide-react";
 
 export const TopBanner = () => {
   return (
     <>
       {/* Hero Section */}
       <main className="container-max">
-        <div className="grid lg:grid-cols-2 items-center">
+        <div className="grid lg:grid-cols-2 items-center gap-12 lg:gap-0">
           {/* Left Content */}
           <div className="space-y-6 lg:space-y-8">
             <div className="inline-flex items-center gap-2  border-none rounded-full px-2 py-2 bg-white/10">
@@ -27,15 +29,12 @@ export const TopBanner = () => {
               lovers the insight and tools they need to grow smarter together.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-12">
-              <Button className="h-auto border-none bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-4 text-base">
-                {/* <Search className="mr-2 h-5 w-5" /> */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-12">
+              <Button className={cn("btn-primary btn-lg")}>
+                <Search />
                 Scan Your Meal
               </Button>
-              <Button
-                variant="outline"
-                className="h-auto bg-white/10 border-none text-white hover:bg-white/30 px-6 py-4 text-base "
-              >
+              <Button variant="outline" className={cn("btn-secondary btn-lg")}>
                 AI-Powered Nutrition
               </Button>
             </div>
@@ -98,10 +97,10 @@ export const TopBanner = () => {
                   <div className="h-3 w-3 rounded-full bg-white mb-1"></div>
 
                   {/* Vertical line upward */}
-                  <div className="w-[2px] h-20 bg-white/80"></div>
+                  <div className="w-0.5 h-20 bg-white/80"></div>
 
                   {/* Horizontal line outward */}
-                  <div className="h-[2px] w-16 bg-white/80"></div>
+                  <div className="w-0.5 h-16  bg-white/80"></div>
                 </div>
 
                 {/* Bubble */}
