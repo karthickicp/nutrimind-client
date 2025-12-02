@@ -33,7 +33,13 @@ export const Header = () => {
             variant="outline"
             className="btn-outline-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]"
           >
-            Login / SignUp
+            <a href="/auth/login" className="hover:underline">
+              Login{" "}
+            </a>
+            /
+            <a href="/auth/signup" className="hover:underline">
+              SignUp
+            </a>
           </Button>
           <Button className="btn-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]">
             Join as Trainer / Nut
@@ -110,7 +116,13 @@ export const Header = () => {
               className="btn-outline-primary w-full h-auto py-3 px-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              Login / SignUp
+              <a href="/auth/login" className="hover:underline">
+                Login{" "}
+              </a>
+              /
+              <a href="/auth/signup" className="hover:underline">
+                SignUp
+              </a>
             </Button>
             <Button
               className="btn-primary w-full h-auto py-3 px-4"
