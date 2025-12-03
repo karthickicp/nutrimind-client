@@ -1,8 +1,6 @@
 "use client";
 
 import React, { JSX, useState } from "react";
-// import { Button } from "@/components/ui/button";
-// import { Avatar } from "@/components/ui/avatar";
 import {
   Home,
   Menu,
@@ -25,99 +23,154 @@ export default function NutriMindDashboardLayout(): JSX.Element {
   const [collapsed, setCollapsed] = useState(false);
   const [active, setActive] = useState<string>("smart");
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // for mobile overlay
 
-  function toggleSidebar() {
+  function toggleSidebarWidth() {
     setCollapsed((s) => !s);
     setPopoverOpen(false);
   }
 
+  function openMobileSidebar() {
+    setSidebarOpen(true);
+  }
+
+  function closeMobileSidebar() {
+    setSidebarOpen(false);
+  }
+
   return (
-    <div className="min-h-screen flex bg-black text-white">
+    <div className="min-h-screen bg-black text-white flex relative">
+      {/* Mobile overlay backdrop */}
+      <div
+        className={`fixed inset-0 z-30 bg-black/50 backdrop-blur-sm transition-opacity duration-200 md:hidden ${
+          sidebarOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={closeMobileSidebar}
+      />
+
       {/* Sidebar */}
       <aside
-        className={`flex flex-col transition-all duration-200 ease-in-out bg-[#3A3434] text-white shadow-inner overflow-hidden`}
-        style={{ width: collapsed ? 72 : 280 }}
+        className={`
+          flex flex-col bg-[#3A3434] text-white shadow-inner overflow-hidden
+          transition-transform duration-200 ease-in-out
+          z-40
+          absolute inset-y-0 left-0 w-64
+          ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+          md:static md:translate-x-0
+        `}
+        style={{ width: collapsed ? 72 : 280 }} // still controls width on lg
       >
         {/* Sidebar header */}
         <div className="flex items-center justify-between px-4 py-5">
           <div className="flex items-center gap-3">
             <div className="ml-1">
-              <span className="font-extrabold text-lg">NutriMind</span>
+              {/* 4. Show only "N" when collapsed */}
+              <span className="font-extrabold text-lg">
+                {collapsed ? "N" : "NutriMind"}
+              </span>
             </div>
           </div>
 
-          {/* switch near logo - visible when expanded */}
+          {/* Collapse toggle – only visible on lg (desktop) */}
           <div className="flex items-center">
             {!collapsed ? (
               <button
                 aria-label="collapse sidebar"
-                onClick={toggleSidebar}
-                className="p-2 rounded-md hover:bg-white/5 transition-colors"
+                onClick={toggleSidebarWidth}
+                className="p-2 rounded-md hover:bg-white/5 transition-colors hidden md:inline-flex"
               >
                 <ChevronLeft size={18} />
               </button>
-            ) : null}
+            ) : (
+              <button
+                aria-label="expand sidebar"
+                onClick={toggleSidebarWidth}
+                className="p-2 rounded-md hover:bg-white/5 transition-colors hidden md:inline-flex"
+              >
+                {/* simple right-pointing version using rotate */}
+                <ChevronLeft size={18} className="rotate-180" />
+              </button>
+            )}
           </div>
         </div>
 
         {/* Nav items */}
         <nav className="flex-1 px-2 py-4 space-y-1">
-          <div className="text-xs uppercase text-white/60 px-3 mb-2">
-            Choose Your AI Coach
-          </div>
+          {/* 3. Hide section title when collapsed */}
+          {!collapsed && (
+            <div className="text-xs uppercase text-white/60 px-3 mb-2">
+              Choose Your AI Coach
+            </div>
+          )}
+
           {NAV_ITEMS.map((n) => {
             const isActive = active === n.id;
             return (
-              <button
-                key={n.id}
-                onClick={() => setActive(n.id)}
-                className={`w-full flex items-center gap-3 py-3 px-3 rounded-md hover:bg-white/3 transition-colors ${
-                  isActive ? "bg-white/6 ring-1 ring-emerald-400" : ""
-                }`}
-              >
-                <div className="flex items-center justify-center w-8 h-8 text-white/90">
-                  {n.icon}
-                </div>
-                {!collapsed ? (
+              // 2. Wrap in group for tooltip
+              <div key={n.id} className="relative group">
+                <button
+                  onClick={() => setActive(n.id)}
+                  className={`w-full flex items-center gap-3 py-3 px-3 rounded-md hover:bg-white/10 transition-colors ${
+                    isActive ? "bg-white/10 ring-1 ring-emerald-400" : ""
+                  }`}
+                >
+                  <div className="flex items-center justify-center w-8 h-8 text-white/90">
+                    {n.icon}
+                  </div>
+
+                  {/* label only when not collapsed */}
+                  {!collapsed && (
+                    <div
+                      className={`truncate transition-all duration-200 ${
+                        collapsed
+                          ? "opacity-0 -translate-x-1.5 pointer-events-none"
+                          : "opacity-100"
+                      }`}
+                    >
+                      {n.label}
+                    </div>
+                  )}
+                </button>
+
+                {/* Tooltip when collapsed */}
+                {collapsed && (
                   <div
-                    className={`truncate ${
-                      collapsed
-                        ? "opacity-0 -translate-x-1.5 pointer-events-none"
-                        : "opacity-100"
-                    } transition-all duration-200`}
+                    className="
+                      pointer-events-none
+                      absolute left-full top-1/2 -translate-y-1/2 ml-2
+                      rounded-md bg-black/90 text-xs px-2 py-1 whitespace-nowrap
+                      opacity-0 group-hover:opacity-100
+                      transition-opacity duration-150
+                      shadow-lg
+                    "
                   >
                     {n.label}
                   </div>
-                ) : null}
-              </button>
+                )}
+              </div>
             );
           })}
 
-          <hr className="border-t border-white/6 my-4" />
+          <hr className="border-t border-white/10 my-4" />
 
-          <div
-            className={`text-sm text-white/80 px-3 ${
-              collapsed ? "opacity-0 pointer-events-none" : ""
-            }`}
-          >
-            Recent Conversations
-          </div>
-          <div className="mt-3 space-y-2 px-2">
-            <div
-              className={`py-2 px-3 rounded-md hover:bg-white/3 ${
-                collapsed ? "opacity-0 pointer-events-none" : ""
-              }`}
-            >
-              Lose belly fat in 2 mont..
-            </div>
-            <div
-              className={`py-2 px-3 rounded-md hover:bg-white/3 ${
-                collapsed ? "opacity-0 pointer-events-none" : ""
-              }`}
-            >
-              Create protein meal pl..
-            </div>
-          </div>
+          {/* Recent conversations text – also hidden when collapsed */}
+          {!collapsed && (
+            <>
+              <div className="text-sm text-white/80 px-3">
+                Recent Conversations
+              </div>
+              <div className="mt-3 space-y-2 px-2">
+                <div className="py-2 px-3 rounded-md hover:bg-white/10">
+                  Lose belly fat in 2 mont..
+                </div>
+                <div className="py-2 px-3 rounded-md hover:bg-white/10">
+                  Create protein meal pl..
+                </div>
+              </div>
+            </>
+          )}
         </nav>
 
         {/* Bottom area */}
@@ -147,18 +200,18 @@ export default function NutriMindDashboardLayout(): JSX.Element {
       {/* Main area */}
       <div className="flex-1 min-h-screen flex flex-col">
         {/* Header */}
-        <header className="flex items-center justify-between h-16 px-4 md:px-8 border-b border-white/6">
+        <header className="flex items-center justify-between h-16 px-4 md:px-8 border-b border-white/10">
           <div className="flex items-center gap-4">
-            {collapsed ? (
-              <button
-                onClick={toggleSidebar}
-                aria-label="expand sidebar"
-                className="p-2 rounded-md hover:bg-white/5"
-              >
-                <Menu size={18} />
-              </button>
-            ) : null}
+            {/* 5. Always show hamburger on small screens, hide on lg */}
+            <button
+              onClick={openMobileSidebar}
+              aria-label="open sidebar"
+              className="p-2 rounded-md hover:bg-white/5 md:hidden"
+            >
+              <Menu size={18} />
+            </button>
 
+            {/* Placeholder for title/breadcrumb if needed */}
             <div className="ml-1 text-sm text-white/70">N</div>
           </div>
 
@@ -172,7 +225,7 @@ export default function NutriMindDashboardLayout(): JSX.Element {
           </div>
         </header>
 
-        {/* Content stage */}
+        {/* Content stage (unchanged from your version) */}
         <main className="flex-1 p-6 md:p-10 overflow-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left big card (green) */}
@@ -212,7 +265,7 @@ export default function NutriMindDashboardLayout(): JSX.Element {
                 <div className="relative">
                   <button
                     onClick={() => setPopoverOpen((v) => !v)}
-                    className="bg-white/6 py-3 px-4 rounded-lg shadow-lg"
+                    className="bg-white/10 py-3 px-4 rounded-lg shadow-lg"
                   >
                     Quick Actions
                   </button>
@@ -278,12 +331,12 @@ export default function NutriMindDashboardLayout(): JSX.Element {
           {/* Bottom pill input centered */}
           <div className="mt-10 flex justify-center">
             <div className="w-full max-w-4xl relative">
-              <div className="flex items-center bg-white/6 border border-white/10 rounded-full py-6 px-6">
-                <button className="mr-4 p-2 rounded-full bg-white/5">
+              <div className="flex items-center bg-white/10 border border-white/10 rounded-full py-6 px-6">
+                <button className="mr-4 p-2 rounded-full bg-white/10">
                   <Plus size={20} />
                 </button>
                 <div className="flex-1 text-lg">Plan now</div>
-                <button className="ml-4 p-2 rounded-full bg-white/5">
+                <button className="ml-4 p-2 rounded-full bg-white/10">
                   <Mic size={20} />
                 </button>
               </div>
