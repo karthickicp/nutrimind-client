@@ -2,7 +2,7 @@
 
 export default function NutriMindLanding() {
   return (
-    <div className="min-h-screen bg-black text-white antialiased">
+    <div className="bg-black text-white antialiased">
       {/* HERO */}
 
       <section className="max-w-6xl mx-auto px-6 md:px-8 py-20">
@@ -20,29 +20,21 @@ export default function NutriMindLanding() {
         {/* FEATURE GRID */}
 
         <div className="planner-wrapper flex items-center flex-wrap gap-9 my-20 justify-center">
-          <div className="planner-card flex items-center gap-4 text-[28px] p-4 rounded-lg border border-[#D9D9D9] bg-[#4F4B4B] hover:border-2 hover:border-[#FFE642]">
+          <div className="planner-card">
             <span>🍱</span>
-            <p className="text-2xl font-semibold tracking-wider">
-              AI Diet Planner
-            </p>
+            <p>AI Diet Planner</p>
           </div>
-          <div className="planner-card flex items-center gap-4 text-[28px] p-4 rounded-lg border border-[#D9D9D9] bg-[#4F4B4B] hover:border-2 hover:border-[#FFE642]">
+          <div className="planner-card">
             <span>🧠</span>
-            <p className="text-2xl font-semibold tracking-wider">
-              AI Diet & Wellness Coach Planner
-            </p>
+            <p>AI Diet & Wellness Coach Planner</p>
           </div>
-          <div className="planner-card flex items-center gap-4 text-[28px] p-4 rounded-lg border border-[#D9D9D9] bg-[#4F4B4B] hover:border-2 hover:border-[#FFE642]">
+          <div className="planner-card">
             <span>🧘</span>
-            <p className="text-2xl font-semibold tracking-wider">
-              AI Fitness & Fat-Loss Guide
-            </p>
+            <p>AI Fitness & Fat-Loss Guide</p>
           </div>
-          <div className="planner-card flex items-center gap-4 text-[28px] p-4 rounded-lg border border-[#D9D9D9] bg-[#4F4B4B] hover:border-2 hover:border-[#FFE642]">
+          <div className="planner-card">
             <span>🏋️</span>
-            <p className="text-2xl font-semibold tracking-wider">
-              Trainer Connect
-            </p>
+            <p>Trainer Connect</p>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
-import "@/app/globals.css";
+import "../../globals.css";
 import { Header } from "../layout/header";
 
 const poppins = Poppins({
@@ -24,7 +24,8 @@ export default function PublicLayout({
     <html lang="en">
       <body
         className={`${poppins.variable} antialiased`}
-        style={{ fontFamily: "var(--font-poppins)" }}
+        style={{ fontFamily: "var(--font-poppins)", background: "black" }}
+        suppressHydrationWarning
       >
         <Header />
         {children}

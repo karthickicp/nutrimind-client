@@ -30,7 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${popins.variable} antialiased dark`}>{children}</body>
+      <body
+        className={`${popins.variable} antialiased`}
+        suppressHydrationWarning
+      >
+        {children}
+      </body>
     </html>
   );
 }
