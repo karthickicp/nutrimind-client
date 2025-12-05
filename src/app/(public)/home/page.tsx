@@ -1,28 +1,11 @@
-import dynamic from "next/dynamic";
-
 import { Header } from "../layout/header";
 import { TopBanner } from "./_subPages/topBanner";
-
-const RealtimeLearning = dynamic(() =>
-  import("./_subPages/realtimeLearning").then((mod) => mod.RealtimeLearning)
-);
-
-const Testimonials = dynamic(() =>
-  import("./_subPages/testimonials").then((mod) => mod.Testimonials)
-);
-
-const HowItWorks = dynamic(() =>
-  import("./_subPages/howItWorks").then((mod) => mod.HowItWorks)
-);
-const TrainersPortal = dynamic(() =>
-  import("./_subPages/trainersPortal").then((mod) => mod.TrainersPortal)
-);
-const FooterBanner = dynamic(() =>
-  import("./_subPages/footerBanner").then((mod) => mod.FooterBanner)
-);
-const Footer = dynamic(() =>
-  import("./_subPages/footer").then((mod) => mod.Footer)
-);
+import { RealtimeLearning } from "./_subPages/realtimeLearning";
+import { Testimonials } from "./_subPages/testimonials";
+import { HowItWorks } from "./_subPages/howItWorks";
+import { FooterBanner } from "./_subPages/footerBanner";
+import { Footer } from "./_subPages/footer";
+import { TrainersPortal } from "./_subPages/trainersPortal";
 
 const HomePage = () => {
   return (

@@ -9,7 +9,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-      <header className="bg-black">
+      <header>
         <div className="container flex items-center justify-between py-4">
           <div className="text-2xl font-bold">NutriMind</div>
 

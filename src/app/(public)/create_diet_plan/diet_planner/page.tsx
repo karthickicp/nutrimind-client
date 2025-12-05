@@ -3,10 +3,9 @@
 import { useFormik } from "formik";
 import FormLayout from "../../layout/formLayout";
 import { Input } from "@/components/ui/input";
-import { SelectBox } from "@/components/common/selectBox";
-import { SelectItem } from "@radix-ui/react-select";
+
 import { FormField } from "@/components/ui/label";
-import Select from "@/components/ui/select";
+import Select from "@/components/common/selectBox";
 
 export const dropdownBoxOptions = [
   { label: "Male", value: "male" },

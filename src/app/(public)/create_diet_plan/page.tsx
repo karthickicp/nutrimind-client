@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
+
 export default function NutriMindLanding() {
   return (
-    <div className="bg-black text-white antialiased">
+    <div className=" ">
       {/* HERO */}
 
       <section className="max-w-6xl mx-auto px-6 md:px-8 py-20">
@@ -20,10 +22,10 @@ export default function NutriMindLanding() {
         {/* FEATURE GRID */}
 
         <div className="planner-wrapper flex items-center flex-wrap gap-9 my-20 justify-center">
-          <div className="planner-card">
+          <Link href="/create_diet_plan/diet_planner" className="planner-card">
             <span>🍱</span>
             <p>AI Diet Planner</p>
-          </div>
+          </Link>
           <div className="planner-card">
             <span>🧠</span>
             <p>AI Diet & Wellness Coach Planner</p>

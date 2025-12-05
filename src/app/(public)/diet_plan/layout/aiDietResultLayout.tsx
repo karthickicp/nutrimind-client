@@ -19,7 +19,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "analyzer", label: "Body Analyzer", icon: <Settings size={18} /> },
 ];
 
-export default function NutriMindDashboardLayout(): JSX.Element {
+export default function AIDietResultLayout(): JSX.Element {
   const [collapsed, setCollapsed] = useState(false);
   const [active, setActive] = useState<string>("smart");
   const [popoverOpen, setPopoverOpen] = useState(false);
@@ -39,7 +39,7 @@ export default function NutriMindDashboardLayout(): JSX.Element {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex relative">
+    <div className="min-h-screen text-white flex relative">
       {/* Mobile overlay backdrop */}
       <div
         className={`fixed inset-0 z-30 bg-black/50 backdrop-blur-sm transition-opacity duration-200 md:hidden ${
