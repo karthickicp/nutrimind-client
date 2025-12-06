@@ -34,7 +34,7 @@ export const TrainersPortal = () => {
             See what your trainer sees Understand your food impact Stay
             consistent with AI motivation
           </p>
-          <Button className="h-auto border-4 border-white/20  text-white hover:bg-white/10 cursor-pointer py-5 px-8 font-semibold text-lg rounded-lg tracking-wide bg-transparent">
+          <Button className="h-auto border-4 border-[#4F4B4B] text-white hover:bg-white/10 cursor-pointer py-5 px-8 font-semibold text-lg rounded-lg tracking-wide bg-transparent">
             Start as Fitness Lover
           </Button>
         </div>
