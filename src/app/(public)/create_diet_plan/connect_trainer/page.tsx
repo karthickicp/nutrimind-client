@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import { dropdownBoxOptions } from "../diet_planner/page";
 import { Input } from "@/components/ui/input";
 import { trainerConnectSchema } from "@/lib/validationSchema";
-import Select from "@/components/ui/select";
+import Select from "@/components/common/selectBox";
 
 type TrainerConnectFormikDataProps = {
   sleepHours: string;

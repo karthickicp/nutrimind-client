@@ -9,54 +9,56 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-      <header className="container flex items-center justify-between py-4">
-        <div className="text-2xl font-bold">NutriMind</div>
+      <header>
+        <div className="container flex items-center justify-between py-4">
+          <div className="text-2xl font-bold">NutriMind</div>
 
-        <div className="flex items-center gap-6">
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8 me-6">
-            <Link
-              href="/"
-              className="text-gray-400 hover:text-white transition-colors"
+          <div className="flex items-center gap-6">
+            {/* Desktop nav */}
+            <nav className="hidden md:flex items-center gap-8 me-6">
+              <Link
+                href="/"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Trainers
+              </Link>
+              <Link
+                href="/"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Pricing
+              </Link>
+            </nav>
+
+            <Button
+              variant="outline"
+              className="btn-outline-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]"
             >
-              Trainers
-            </Link>
-            <Link
-              href="/"
-              className="text-gray-400 hover:text-white transition-colors"
+              <a href="/auth/login" className="hover:underline">
+                Login{" "}
+              </a>
+              /
+              <a href="/auth/signup" className="hover:underline">
+                SignUp
+              </a>
+            </Button>
+            <Button className="btn-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]">
+              Join as Trainer / Nut
+            </Button>
+
+            {/* Mobile hamburger */}
+            <button
+              type="button"
+              className="md:hidden flex items-center flex-col justify-center rounded-md p-2 border border-white/10 text-white hover:bg-white/10"
+              onClick={() => setIsMenuOpen(true)}
+              aria-label="Open menu"
             >
-              Pricing
-            </Link>
-          </nav>
-
-          <Button
-            variant="outline"
-            className="btn-outline-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]"
-          >
-            <a href="/auth/login" className="hover:underline">
-              Login{" "}
-            </a>
-            /
-            <a href="/auth/signup" className="hover:underline">
-              SignUp
-            </a>
-          </Button>
-          <Button className="btn-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]">
-            Join as Trainer / Nut
-          </Button>
-
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            className="md:hidden flex items-center flex-col justify-center rounded-md p-2 border border-white/10 text-white hover:bg-white/10"
-            onClick={() => setIsMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            {/* simple hamburger icon */}
-            <span className="block w-5 h-[2px] bg-white mb-1" />
-            <span className="block w-5 h-[2px] bg-white mb-1" />
-            <span className="block w-5 h-[2px] bg-white" />
-          </button>
+              {/* simple hamburger icon */}
+              <span className="block w-5 h-0.5 bg-white mb-1" />
+              <span className="block w-5 h-0.5 bg-white mb-1" />
+              <span className="block w-5 h-0.5 bg-white" />
+            </button>
+          </div>
         </div>
       </header>
 

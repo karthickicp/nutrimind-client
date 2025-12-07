@@ -1,12 +1,12 @@
 // AiFitnessForm.tsx
 "use client";
-import React from "react";
-import { Label } from "@/components/ui/label";
-import FormLayout from "../../layout/formLayout";
+
 import { useFormik } from "formik";
+
+import FormLayout from "../../layout/formLayout";
 import { dropdownBoxOptions } from "../diet_planner/page";
 import { fatLossSchema } from "@/lib/validationSchema";
-import Select from "@/components/ui/select";
+import Select from "@/components/common/selectBox";
 
 type FatLossFormikDataProps = {
   currentWeight: object | null;

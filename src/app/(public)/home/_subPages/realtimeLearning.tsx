@@ -3,10 +3,12 @@
 import {
   Carousel,
   CarouselContent,
+  CarouselDots,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  /* CarouselNext,
+  CarouselPrevious, */
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export const RealtimeLearning = () => {
   return (
@@ -22,7 +24,14 @@ export const RealtimeLearning = () => {
             loop: true,
           }}
           orientation="vertical"
-          className="w-full"
+          className="w-full flex flex-row gap-8"
+          plugins={[
+            Autoplay({
+              delay: 5000,
+              stopOnFocusIn: true,
+              stopOnMouseEnter: true,
+            }),
+          ]}
         >
           <CarouselContent className="h-[350px]">
             {Array.from({ length: 3 }).map((_, index) => (
@@ -35,8 +44,12 @@ export const RealtimeLearning = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          {/* <CarouselPrevious />
+          <CarouselNext /> */}
+          <CarouselDots
+            className="justify-center md:justify-around py-4 flex-col"
+            dotClassName="w-[14px] h-[14px]"
+          />
         </Carousel>
       </div>
     </section>
