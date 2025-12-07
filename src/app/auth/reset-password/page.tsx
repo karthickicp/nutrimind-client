@@ -28,7 +28,7 @@ export default function ResetFlow() {
   // --- Step 2 Logic: OTP ---
   const handleOtpChange = (value: string, index: number) => {
     if (!/^[0-9]?$/.test(value)) return;
-    setOtpError(""); // Clear error on change
+    setOtpError(""); 
 
     const newOtp = [...otp];
     newOtp[index] = value;
@@ -54,7 +54,7 @@ export default function ResetFlow() {
     setStep(3);
   };
 
-  // --- Step 3 Form: New Password ---
+  
   const passwordForm = useFormik({
     initialValues: { password: "", confirmPassword: "" },
     validationSchema: resetPasswordNewPasswordSchema,
@@ -93,7 +93,7 @@ export default function ResetFlow() {
 
         <div className="px-8 py-6 text-white">
           
-          {/* STEP 1: Email Input */}
+          
           {step === 1 && (
             <form onSubmit={emailForm.handleSubmit}>
               <div className="mb-4">

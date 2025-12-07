@@ -29,7 +29,7 @@ export default function LoginPage() {
       
       <div 
         className="w-[420px] rounded-2xl shadow-xl bg-[#2d2a2a] border border-[#2d2a2a] overflow-hidden" 
-        style={{ boxShadow: "0 0 15px #00ff88" }} // Reduced shadow
+        style={{ boxShadow: "0 0 15px #00ff88" }} 
       >
         <div className="bg-[#00b46e] py-6 text-center">
           <h1 className="text-2xl font-semibold text-white">Login to your account</h1>
