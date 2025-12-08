@@ -1,10 +1,13 @@
 "use client";
+
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useFormik } from "formik";
 import { loginSchema } from "@/lib/validationSchema";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
+import { FormSubmitButton } from "@/components/common/FormSubmitButton";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,22 +24,6 @@ export default function LoginPage() {
   });
 
   return (
-<<<<<<< HEAD
-    <div className="min-h-screen w-full flex items-center justify-center bg-black relative">
-      <div className="absolute left-10 top-1/2 -translate-y-1/2 text-6xl opacity-30">🔥</div>
-      <div className="absolute right-10 top-1/2 -translate-y-1/2 text-6xl opacity-30">💪</div>
-      <div className="absolute left-20 bottom-10 text-6xl opacity-30">🏋️‍♂️</div>
-      <div className="absolute right-20 bottom-10 text-6xl opacity-30">🥗</div>
-      
-      <div 
-        className="w-[420px] rounded-2xl shadow-xl bg-[#2d2a2a] border border-[#2d2a2a] overflow-hidden" 
-        style={{ boxShadow: "0 0 15px #00ff88" }} 
-      >
-        <div className="bg-[#00b46e] py-6 text-center">
-          <h1 className="text-2xl font-semibold text-white">Login to your account</h1>
-          <p className="text-sm text-white opacity-80 mt-1">It's great to see you again!</p>
-=======
-
     <div
       className="w-[420px] rounded-2xl shadow-xl bg-[#2d2a2a] border border-[#2d2a2a] overflow-hidden"
       style={{ boxShadow: "0 0 15px #00ff88" }} // Reduced shadow
@@ -59,13 +46,12 @@ export default function LoginPage() {
               placeholder="Enter your email address"
               value={values.email}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-12"
+              className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-15"
             />
             {touched.email && errors.email && (
-              <div className="text-red-500 text-xs mt-1">{errors.email}</div>
+              <div className="err-msg">{errors.email}</div>
             )}
           </FormField>
->>>>>>> c4aa84d930517461947e2dba8f385f1bd79257a4
         </div>
 
         <div className="mb-4">
@@ -77,7 +63,7 @@ export default function LoginPage() {
                 placeholder="Enter your password"
                 value={values.password}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-12"
+                className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-15"
               />
               <button
                 type="button"
@@ -88,30 +74,30 @@ export default function LoginPage() {
               </button>
             </div>
             {touched.password && errors.password && (
-              <div className="text-red-500 text-xs mt-1">
-                {errors.password}
-              </div>
+              <div className="err-msg">{errors.password}</div>
             )}
           </FormField>
         </div>
 
         <p className="text-xs text-white mb-4">
-          By signing up you agree to our <u>Terms</u>, <u>Privacy Policy</u>,
-          and <u>Cookie Use</u>
+          By signing up you agree to our <u className="cursor-pointer">Terms</u>
+          , <u className="cursor-pointer">Privacy Policy</u>, and{" "}
+          <u className="cursor-pointer">Cookie Use</u>
         </p>
 
-        <button
-          type="submit"
-          className="w-full py-3 rounded-lg bg-[#b6ffe4] text-black font-semibold mb-4 hover:bg-[#9effd6] transition-colors"
-        >
-          Login
-        </button>
+        <FormSubmitButton
+          className="btn-primary w-full rounded-lg bg-[#25AB75] mb-4 h-15"
+          buttonText="Login"
+        />
 
         <p className="text-center text-sm text-white mb-2">
           Don&apos;t have an account?{" "}
-          <span className="text-green-400 cursor-pointer hover:underline">
-            <a href="/auth/signup">SignUp</a>
-          </span>
+          <Link
+            href="/auth/signup"
+            className="text-primary cursor-pointer hover:underline"
+          >
+            SignUp
+          </Link>
         </p>
 
         <p className="text-center text-gray-400 mb-3">OR</p>
@@ -144,11 +130,7 @@ export default function LoginPage() {
             type="button"
             className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-2xl cursor-pointer border border-gray-600 text-white hover:border-gray-400 transition-colors p-2.5"
           >
-            <svg
-              viewBox="0 0 384 512"
-              fill="currentColor"
-              className="w-5 h-5"
-            >
+            <svg viewBox="0 0 384 512" fill="currentColor" className="w-5 h-5">
               <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 52.3-11.4 69.5-34.3z" />
             </svg>
           </button>

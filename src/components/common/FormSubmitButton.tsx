@@ -10,12 +10,13 @@ import { VariantProps } from "class-variance-authority";
 export const FormSubmitButton = ({
   buttonText,
   disabled,
+  ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & { buttonText: string }) => {
   const { pending } = useFormStatus();
   return (
     <>
-      <Button type="submit" disabled={disabled || pending}>
+      <Button type="submit" disabled={disabled || pending} {...props}>
         {pending && <Spinner />}
         {buttonText}
       </Button>
