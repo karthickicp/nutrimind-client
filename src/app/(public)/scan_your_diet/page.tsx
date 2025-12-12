@@ -56,7 +56,7 @@ export default function ScanYourDietPage() {
 
     return (
         <div className="flex-1 flex flex-col p-4 md:p-8 relative container mx-auto max-w-7xl">
-            {/* Top Controls */}
+            
             <div className="flex justify-between items-center mb-8 md:mb-12">
                 <Link href="/" className="p-2 hover:bg-white/10 rounded-full transition-colors">
                     <ArrowLeft className="w-6 h-6 text-emerald-500" />
@@ -66,7 +66,7 @@ export default function ScanYourDietPage() {
                 </Button>
             </div>
 
-            {/* Upload Card */}
+           
             <div className="flex-1 flex justify-center items-center pb-10">
                 <Card className="w-full max-w-6xl bg-[#1E1E1E] border-none shadow-2xl relative">
                     {files.length === 0 && (

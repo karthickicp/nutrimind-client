@@ -79,29 +79,6 @@ export default function ResetFlow() {
           {step === 4 && "Password Changed!"}
         </h1>
 
-<<<<<<< HEAD
-        <div className="px-8 py-6 text-white">
-          
-          
-          {step === 1 && (
-            <form onSubmit={emailForm.handleSubmit}>
-              <div className="mb-4">
-                <FormField label="Email">
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your email address"
-                    value={emailForm.values.email}
-                    onChange={emailForm.handleChange}
-                    onBlur={emailForm.handleBlur}
-                    className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-12"
-                  />
-                  {emailForm.touched.email && emailForm.errors.email && (
-                    <div className="text-red-500 text-xs mt-1">{emailForm.errors.email}</div>
-                  )}
-                </FormField>
-              </div>
-=======
         <p className="text-sm text-white opacity-80 mt-1">
           {step === 1 && "Let's get you back into your account."}
           {step === 2 && "Check your email and enter the code."}
@@ -109,7 +86,6 @@ export default function ResetFlow() {
           {step === 4 && "You can now login with your new password."}
         </p>
       </div>
->>>>>>> c4aa84d930517461947e2dba8f385f1bd79257a4
 
       <div className="px-8 py-6 text-white">
 

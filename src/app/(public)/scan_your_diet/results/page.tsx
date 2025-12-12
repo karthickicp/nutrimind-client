@@ -3,7 +3,7 @@ import { ArrowLeft, Heart } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-// Mock data based on the image
+
 const macros = [
     { label: "Calories", value: "2,230 kcal", percentage: 75, color: "text-purple-500", borderColor: "border-purple-500" },
     { label: "Protein", value: "23%", subValue: "/100%", percentage: 23, color: "text-emerald-500", borderColor: "border-emerald-500" },
@@ -21,7 +21,7 @@ const ingredients = [
 export default function ResultsPage() {
     return (
         <main className="flex-1 flex flex-col p-4 md:p-8 relative container mx-auto max-w-6xl">
-            {/* Top Controls */}
+           
             <div className="flex justify-between items-center mb-6">
                 <Link href="/scan_your_diet" className="p-2 hover:bg-white/10 rounded-full transition-colors">
                     <ArrowLeft className="w-6 h-6 text-emerald-500" />
@@ -31,15 +31,15 @@ export default function ResultsPage() {
                 </Button>
             </div>
 
-            {/* Unified Card Container */}
+        
             <div className="flex flex-col lg:flex-row w-full bg-[#1E1E1E] rounded-3xl overflow-hidden shadow-2xl min-h-[600px]">
-                {/* Left Panel: Image and Summary */}
+               
                 <div className="flex-1 p-6 md:p-8 flex flex-col gap-6 bg-[#1A1A1A]">
                     <div className="flex-1 flex flex-row gap-6">
                         <div className="relative w-1/2 aspect-square rounded-2xl overflow-hidden shadow-lg">
                             <Image
-                                src="/images/scanned_diet.png"
-                                alt="Grilled Chicken Strips"
+                                src="/images/home/scanned_diet.png"
+                                alt="image"
                                 fill
                                 className="object-cover"
                             />
@@ -68,7 +68,7 @@ export default function ResultsPage() {
                     </Button>
                 </div>
 
-                {/* Right Panel: Ingredients List */}
+                
                 <div className="flex-1 bg-[#4F4B4B] p-6 md:p-8 flex flex-col gap-4 overflow-y-auto max-h-[800px]">
                     {ingredients.map((item, i) => (
                         <div key={i} className="bg-black p-5 rounded-2xl border border-white/5 opacity-80 hover:opacity-100 transition-opacity">

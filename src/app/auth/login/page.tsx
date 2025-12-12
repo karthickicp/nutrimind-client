@@ -21,21 +21,6 @@ export default function LoginPage() {
   });
 
   return (
-<<<<<<< HEAD
-    <div className="min-h-screen w-full flex items-center justify-center bg-black relative">
-      <div className="absolute left-10 top-1/2 -translate-y-1/2 text-6xl opacity-30">🔥</div>
-      <div className="absolute right-10 top-1/2 -translate-y-1/2 text-6xl opacity-30">💪</div>
-      <div className="absolute left-20 bottom-10 text-6xl opacity-30">🏋️‍♂️</div>
-      <div className="absolute right-20 bottom-10 text-6xl opacity-30">🥗</div>
-      
-      <div 
-        className="w-[420px] rounded-2xl shadow-xl bg-[#2d2a2a] border border-[#2d2a2a] overflow-hidden" 
-        style={{ boxShadow: "0 0 15px #00ff88" }} 
-      >
-        <div className="bg-[#00b46e] py-6 text-center">
-          <h1 className="text-2xl font-semibold text-white">Login to your account</h1>
-          <p className="text-sm text-white opacity-80 mt-1">It's great to see you again!</p>
-=======
 
     <div
       className="w-[420px] rounded-2xl shadow-xl bg-[#2d2a2a] border border-[#2d2a2a] overflow-hidden"
@@ -65,7 +50,6 @@ export default function LoginPage() {
               <div className="text-red-500 text-xs mt-1">{errors.email}</div>
             )}
           </FormField>
->>>>>>> c4aa84d930517461947e2dba8f385f1bd79257a4
         </div>
 
         <div className="mb-4">

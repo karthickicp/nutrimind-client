@@ -9,7 +9,6 @@ export default function ScanDietLayout({
 }) {
     return (
         <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-            {/* Shared Header */}
             <header className="flex justify-between items-center p-4 md:px-8 border-b border-border/10">
                 <div className="font-bold text-xl md:text-2xl tracking-wider text-muted-foreground">N</div>
                 <div className="flex items-center gap-4">
