@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "@/app/globals.css";
-import { UserDetailsFormikContext } from "@/lib/contexts";
-import { useFormik } from "formik";
+import UserDetailsProvider from "../layout/provider";
 
 const popins = Poppins({
   variable: "--font-poppins",
@@ -20,50 +19,13 @@ export default function UserDetailsRootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { handleChange, setFieldValue, errors, values, handleSubmit, touched } =
-    useFormik({
-      initialValues: {
-        weight: null,
-        height: null,
-        age: null,
-        goalType: null,
-        allergy: null,
-        activityOrGym: null,
-        religion: "",
-        category: null,
-        state: "",
-      },
-      onSubmit(values) {},
-    });
-
-  const userDetailsFormikContextValue = {
-    weight: null,
-    height: null,
-    age: null,
-    goalType: null,
-    allergy: null,
-    activityOrGym: null,
-    religion: "",
-    category: null,
-    state: "",
-    handleChange,
-    setFieldValue,
-    errors,
-    values,
-    handleSubmit,
-    touched,
-  };
   return (
     <html lang="en">
       <body
         className={`${popins.variable} antialiased dark`}
         suppressHydrationWarning
       >
-        <UserDetailsFormikContext.Provider
-          value={userDetailsFormikContextValue}
-        >
-          {children}
-        </UserDetailsFormikContext.Provider>
+        <UserDetailsProvider>{children}</UserDetailsProvider>
       </body>
     </html>
   );
