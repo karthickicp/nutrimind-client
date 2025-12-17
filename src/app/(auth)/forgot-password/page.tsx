@@ -10,10 +10,7 @@ const ForgotPassword = () => {
   const { values, handleChange, handleBlur, handleSubmit, errors, touched } =
     useFormik({
       initialValues: {
-        fullName: "",
         email: "",
-        password: "",
-        confirmPassword: "",
       },
       validationSchema: forgotPasswordSchema,
       onSubmit: async (values) => {
