@@ -8,8 +8,13 @@ import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
 import { FormSubmitButton } from "@/components/common/FormSubmitButton";
 import Link from "next/link";
+import { loginUser } from "@/actions/auth";
+import { useRouter } from "next/navigation";
+import { toaster } from "@/components/ui/toast";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const { values, handleChange, handleSubmit, errors, touched } = useFormik({
@@ -18,8 +23,15 @@ export default function LoginPage() {
       password: "",
     },
     validationSchema: loginSchema,
-    onSubmit: (values) => {
-      console.log("Login Values:", values);
+    onSubmit: async (values) => {
+      const res = await loginUser(values);
+      if (res?.success) {
+        toaster.success(res.message);
+        router.push("/home");
+        router.refresh();
+      } else {
+        toaster.error(res?.message || "error");
+      }
     },
   });
 
@@ -68,7 +80,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-white opacity-70 hover:opacity-100 transition-opacity"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowPassword((prev) => !prev)}
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
@@ -80,9 +92,12 @@ export default function LoginPage() {
         </div>
 
         <p className="text-xs text-white mb-4">
-          By signing up you agree to our <u className="cursor-pointer">Terms</u>
-          , <u className="cursor-pointer">Privacy Policy</u>, and{" "}
-          <u className="cursor-pointer">Cookie Use</u>
+          <Link
+            href="/auth/forgot_password"
+            className="text-primary cursor-pointer hover:underline"
+          >
+            Forgot Password?
+          </Link>
         </p>
 
         <FormSubmitButton

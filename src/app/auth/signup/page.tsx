@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useFormik } from "formik";
@@ -7,8 +8,13 @@ import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
 import Link from "next/link";
 import { FormSubmitButton } from "@/components/common/FormSubmitButton";
+import { useRouter } from "next/navigation";
+import { signupUser } from "@/actions/auth";
+import { toaster } from "@/components/ui/toast";
 
 export default function SignupPage() {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -20,8 +26,16 @@ export default function SignupPage() {
       confirmPassword: "",
     },
     validationSchema: signupSchema,
-    onSubmit: (values) => {
-      console.log("Signup Values:", values);
+    onSubmit: async (values) => {
+      const res = await signupUser({
+        name: values.fullName,
+        email: values.email,
+        password: values.password,
+      });
+      if (res?.success) {
+        toaster.success(res.message);
+        router.push("/auth/login");
+      }
     },
   });
 

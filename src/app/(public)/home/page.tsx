@@ -9,7 +9,7 @@ import { TrainersPortal } from "./_subPages/trainersPortal";
 
 const HomePage = () => {
   return (
-    <>
+    <div className="dark">
       <Header />
       <TopBanner />
       <HowItWorks />
@@ -18,7 +18,7 @@ const HomePage = () => {
       <Testimonials />
       <FooterBanner />
       <Footer />
-    </>
+    </div>
   );
 };
 
