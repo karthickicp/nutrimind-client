@@ -1,11 +1,13 @@
 "use client";
 
-import { User } from "lucide-react";
-import UserDetailsFormLayout from "../../layout/userDetailsFormLayout";
 import { useFormik } from "formik";
-import Select from "@/components/common/selectBox";
+import { User } from "lucide-react";
+
 import { dropdownBoxOptions } from "@/app/(public)/create_diet_plan/diet_planner/page";
+import Select from "@/components/common/selectBox";
 import { useUserDetails } from "@/lib/contexts";
+
+import UserDetailsFormLayout from "../../layout/userDetailsFormLayout";
 
 const PersonalDetails = () => {
   const { handleSubmit, handleChange, values, errors, touched, setFieldValue } =

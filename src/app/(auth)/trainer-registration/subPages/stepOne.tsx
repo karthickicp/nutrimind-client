@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+
 import { ArrowLeft, User, Mail, Lock } from "lucide-react";
 
 export default function TrainerRegistrationStepOne() {

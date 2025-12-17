@@ -18,7 +18,6 @@ export type ILoginReq = {
 };
 
 export interface ILoginRes extends IApiResponse {
-  notification_group: "NutriMind";
   access_token: string;
-  user: unknown;
+  user: unknown | null;
 }

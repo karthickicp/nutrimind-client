@@ -1,12 +1,15 @@
 "use client";
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+
+import Link from "next/link";
+
 import { useFormik } from "formik";
-import { resetPasswordNewPasswordSchema } from "@/lib/validationSchema";
+import { Eye, EyeOff } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { resetPasswordNewPasswordSchema } from "@/lib/validationSchema";
 
 export default function ResetFlow() {
   const [step, setStep] = useState(1);

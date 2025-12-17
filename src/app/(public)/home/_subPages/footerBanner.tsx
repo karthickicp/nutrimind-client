@@ -1,5 +1,6 @@
-import { Button } from "@/components/ui/button";
 import React from "react";
+
+import { Button } from "@/components/ui/button";
 
 export const FooterBanner = () => {
   return (
@@ -14,7 +15,7 @@ export const FooterBanner = () => {
         {/* Banner with Image and Button */}
         <div className="relative rounded-3xl overflow-hidden">
           <img
-            src={"/images/home/footer_banner.png"}
+            src="/images/home/footer_banner.png"
             alt="Transform your lifestyle with NutriMind - training, nutrition, and growth"
             className="w-full h-[250px] md:h-[350px] lg:h-[400px] object-cover"
           />

@@ -1,9 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+
+import Link from "next/link";
+
+import { Search } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 export const TopBanner = () => {
   const dietImgRef = useRef<HTMLImageElement>(null);

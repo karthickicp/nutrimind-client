@@ -1,11 +1,13 @@
 "use client";
-import { FormField } from "@/components/ui/label";
-import FormLayout from "../../layout/formLayout";
 import { useFormik } from "formik";
-import { dropdownBoxOptions } from "../diet_planner/page";
-import { Input } from "@/components/ui/input";
-import { trainerConnectSchema } from "@/lib/validationSchema";
+
 import Select from "@/components/common/selectBox";
+import { Input } from "@/components/ui/input";
+import { FormField } from "@/components/ui/label";
+import { trainerConnectSchema } from "@/lib/validationSchema";
+
+import FormLayout from "../../layout/formLayout";
+import { dropdownBoxOptions } from "../diet_planner/page";
 
 type TrainerConnectFormikDataProps = {
   sleepHours: string;

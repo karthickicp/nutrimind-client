@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
+
 import { X, ChevronDown, Plus } from "lucide-react";
 
-type OptionType = string | number | Record<string, any>; //eslint-disable-line
+type OptionType = string | number | Record<string, any>;
 
 interface SelectProps {
   title?: string;
@@ -158,8 +159,8 @@ const Select: React.FC<SelectProps> = ({
                   ? `${value.length} selected`
                   : placeholder
                 : value
-                ? getOptionLabel(value)
-                : placeholder}
+                  ? getOptionLabel(value)
+                  : placeholder}
             </span>
           )}
           <ChevronDown

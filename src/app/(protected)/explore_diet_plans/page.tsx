@@ -1,6 +1,8 @@
 import { ArrowLeft, Heart } from "lucide-react";
-import Card from "./_components/card";
+
 import { EXPLORE_DIET_PLAN_TYPE } from "@/lib/constants";
+
+import Card from "./_components/card";
 
 type ExploreDietPlanProps = {
   searchParams: Promise<{

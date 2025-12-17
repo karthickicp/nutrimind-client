@@ -1,6 +1,11 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+
+import { X, UploadCloud } from "lucide-react";
+
+import { Button } from "@/components/ui/button"; // optional
+import { Label } from "@/components/ui/label"; // optional - replace if not present
 import {
   Select,
   SelectTrigger,
@@ -8,9 +13,6 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { Label } from "@/components/ui/label"; // optional - replace if not present
-import { Button } from "@/components/ui/button"; // optional
-import { X, UploadCloud } from "lucide-react";
 
 type FileMeta = { id: string; name: string; size: number };
 

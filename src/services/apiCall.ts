@@ -1,8 +1,8 @@
 "use server";
 
 import { ApiType } from "@/constants/common";
+import { getAccessToken } from "@/lib/auth-helpers";
 import { IApiCallRequest } from "@/types/common";
-import { cookies } from "next/headers";
 
 export const apiCall = async ({
   url,
@@ -21,8 +21,7 @@ export const apiCall = async ({
       : process.env.NEXT_PUBLIC_UNAUTH_API_BASE_URL;
 
   console.log(apiBaseUrl, "apiBaseUrl");
-  const cookieStore = await cookies();
-  const token = cookieStore.get("nutri-accessToken")?.value || null;
+  const token = await getAccessToken();
   let apiPath = `${apiBaseUrl}${url}`;
   if (params) {
     apiPath += `?${new URLSearchParams(params)}`;

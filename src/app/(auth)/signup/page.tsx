@@ -1,16 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import { useFormik } from "formik";
-import { signupSchema } from "@/lib/validationSchema";
+import { Eye, EyeOff } from "lucide-react";
+
+import { signupUser } from "@/actions/auth";
+import { FormSubmitButton } from "@/components/common/FormSubmitButton";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
-import Link from "next/link";
-import { FormSubmitButton } from "@/components/common/FormSubmitButton";
-import { useRouter } from "next/navigation";
-import { signupUser } from "@/actions/auth";
 import { toaster } from "@/components/ui/toast";
+import { signupSchema } from "@/lib/validationSchema";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -32,9 +35,11 @@ export default function SignupPage() {
         email: values.email,
         password: values.password,
       });
-      if (res?.success) {
+      if (res.success) {
         toaster.success(res.message);
         router.push("/auth/login");
+      } else {
+        toaster.error(res.message);
       }
     },
   });

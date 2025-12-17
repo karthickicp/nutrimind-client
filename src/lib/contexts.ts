@@ -1,5 +1,6 @@
-import { UserDetailsFormikContextProps } from "@/app/(protected)/layout/provider";
 import { createContext, useContext } from "react";
+
+import { UserDetailsFormikContextProps } from "@/app/(protected)/layout/provider";
 
 export const UserDetailsFormikContext =
   createContext<UserDetailsFormikContextProps | null>(null);

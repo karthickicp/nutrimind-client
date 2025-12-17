@@ -19,7 +19,7 @@ export const HowItWorks = () => {
 
   return (
     <section className=" container">
-      <h2 className={"sub-title"}>How is it work?</h2>
+      <h2 className="sub-title">How is it work?</h2>
 
       <div className="grid md:grid-cols-3 gap-6 lg:gap-12">
         {options.map((option) => (

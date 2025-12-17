@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowLeft } from "lucide-react";
 import React from "react";
+
+import { ArrowLeft } from "lucide-react";
 
 type UserDetailsFormLayoutProps = {
   onBackPress?: () => void;

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useRef, useState } from "react";
+
 import { ArrowRight } from "lucide-react";
 
 const OFFER_OPTIONS = ["Diets", "Workout", "Both"] as const;

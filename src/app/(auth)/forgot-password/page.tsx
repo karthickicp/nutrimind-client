@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
+
+import { useFormik } from "formik";
+
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
 import { forgotPasswordSchema } from "@/lib/validationSchema";
-import { useFormik } from "formik";
-import Link from "next/link";
 
 const ForgotPassword = () => {
   const { values, handleChange, handleBlur, handleSubmit, errors, touched } =

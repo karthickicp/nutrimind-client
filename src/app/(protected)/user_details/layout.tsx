@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import { Poppins } from "next/font/google";
+
 import "@/app/globals.css";
 import UserDetailsProvider from "@/providers/user-details-provider";
 

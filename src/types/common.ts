@@ -1,4 +1,5 @@
 import { ApiType } from "@/constants/common";
+
 export type IApiCallRequest = {
   url: string;
   method: string;

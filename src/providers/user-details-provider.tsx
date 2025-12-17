@@ -1,8 +1,10 @@
 "use client";
 
-import { UserDetailsFormikContext } from "@/lib/contexts";
-import { FormikErrors, FormikTouched, useFormik } from "formik";
 import { ReactNode } from "react";
+
+import { FormikErrors, FormikTouched, useFormik } from "formik";
+
+import { UserDetailsFormikContext } from "@/lib/contexts";
 
 export interface UserDetailsFormikDataProps {
   weight: number | null;

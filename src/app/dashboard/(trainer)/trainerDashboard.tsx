@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   //   Download,
   //   Plus,
@@ -9,6 +8,8 @@ import {
   Share2,
   Calendar,
 } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 export default function TrainerDashboard() {
   return (

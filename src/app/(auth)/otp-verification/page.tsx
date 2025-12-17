@@ -1,8 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useFormik } from "formik";
 import { useRef } from "react";
+
+import { useFormik } from "formik";
+
+import { Button } from "@/components/ui/button";
 
 const OTPVerification = () => {
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);

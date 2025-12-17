@@ -1,5 +1,6 @@
-import { Flame, Beef, Wheat, Droplet, ExternalLink } from "lucide-react";
 import Image from "next/image";
+
+import { Flame, Beef, Wheat, Droplet, ExternalLink } from "lucide-react";
 
 const Card = () => {
   return (
@@ -48,9 +49,7 @@ const Card = () => {
 
 function StoreBadge({ imageSource }: { imageSource: string }) {
   return (
-    <button
-      className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-medium border-2 border-[#25AB75]`}
-    >
+    <button className="flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-medium border-2 border-[#25AB75]">
       <Image
         src={imageSource}
         alt="Grilled Chicken Strips"
