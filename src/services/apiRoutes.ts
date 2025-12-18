@@ -23,3 +23,9 @@ export const apiVerifyOtp = {
   method: HttpMethods.POST,
   type: ApiType.UNAUTH,
 };
+
+export const apiresetPassword = {
+  url: "internal/auth/reset-password",
+  method: HttpMethods.POST,
+  type: ApiType.UNAUTH,
+};

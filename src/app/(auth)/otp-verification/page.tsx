@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { useFormik } from "formik";
 
@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/button";
 import { toaster } from "@/components/ui/toast";
 
 const OTPVerification = () => {
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
+
   const router = useRouter();
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
 
@@ -19,19 +22,14 @@ const OTPVerification = () => {
     },
     onSubmit: async (values) => {
       const otpString = values.otp.join("");
-
-      // TODO: Replace with actual email from URL params or session storage
-      const dummyEmail = "user@example.com";
-
       const res = await verifyOtp({
-        email: dummyEmail,
+        email: token ?? "",
         otp: otpString,
       });
-
       if (res.success) {
         toaster.success(res.message);
         // Navigate to reset password page
-        router.push("/auth/reset-password");
+        router.push("/reset-password");
       } else {
         toaster.error(res.message);
       }
@@ -45,7 +43,7 @@ const OTPVerification = () => {
     newOtp[index] = value;
     setFieldValue("otp", newOtp);
 
-    if (value && index < 3) {
+    if (value && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
   };
@@ -86,8 +84,9 @@ const OTPVerification = () => {
                 ref={(el) => {
                   inputRefs.current[index] = el;
                 }}
-                className={`w-12 h-12 text-center text-2xl rounded-lg bg-black border ${errors.otp ? "border-red-500" : "border-gray-700"
-                  } focus:outline-none focus:border-green-400 text-white`}
+                className={`w-12 h-12 text-center text-2xl rounded-lg bg-black border ${
+                  errors.otp ? "border-red-500" : "border-gray-700"
+                } focus:outline-none focus:border-green-400 text-white`}
                 maxLength={1}
               />
             ))}
@@ -109,6 +108,7 @@ const OTPVerification = () => {
           <Button
             className="btn-primary w-full py-3 h-15"
             onClick={() => handleSubmit()}
+            type="submit"
           >
             Continue
           </Button>

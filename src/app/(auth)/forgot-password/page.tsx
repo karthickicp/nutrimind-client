@@ -22,11 +22,11 @@ const ForgotPassword = () => {
       validationSchema: forgotPasswordSchema,
       onSubmit: async (values) => {
         const res = await forgotPassword({ email: values.email });
-
         if (res.success) {
           toaster.success(res.message);
+
           // Navigate to OTP verification page
-          router.push("/auth/otp-verification");
+          router.push(`/otp-verification?token=${res.message}`);
         } else {
           toaster.error(res.message);
         }

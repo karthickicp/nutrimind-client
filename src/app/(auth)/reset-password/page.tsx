@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
 import { resetPasswordNewPasswordSchema } from "@/lib/validationSchema";
+import { resetPassword } from "@/actions/auth";
+import { toaster } from "@/components/ui/toast";
 
 export default function ResetFlow() {
   const [step, setStep] = useState(1);
@@ -20,9 +22,16 @@ export default function ResetFlow() {
     useFormik({
       initialValues: { password: "", confirmPassword: "" },
       validationSchema: resetPasswordNewPasswordSchema,
-      onSubmit: (values) => {
-        console.log("Setting new password:", values.password);
-        setStep(2);
+      onSubmit: async (values) => {
+        const res = await resetPassword({
+          password: values.password,
+        });
+        if (res.success) {
+          setStep(2);
+          toaster.success(res.message);
+        } else {
+          toaster.error(res.message);
+        }
       },
     });
 

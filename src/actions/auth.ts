@@ -8,6 +8,7 @@ import {
   apiSignUp,
   apiForgotPassword,
   apiVerifyOtp,
+  apiresetPassword,
 } from "@/services/apiRoutes";
 import {
   ILoginReq,
@@ -18,7 +19,9 @@ import {
   IForgotPasswordRes,
   IVerifyOtpReq,
   IVerifyOtpRes,
+  IResetPasswordReq,
 } from "@/types/auth/auth-api";
+import { IApiResponse } from "@/types/common";
 
 export const signupUser = async (payload: ISignupReq): Promise<ISignUpRes> => {
   try {
@@ -126,14 +129,42 @@ export const verifyOtp = async (
     if (!response.ok) {
       return {
         success: false,
-        message:
-          verifyOtpResponse.message || "Invalid OTP. Please try again.",
+        message: verifyOtpResponse.message || "Invalid OTP. Please try again.",
       };
     }
 
     return verifyOtpResponse;
   } catch (err) {
     console.error("[verifyOtp] Error:", err);
+    return {
+      success: false,
+      message: "An unexpected error occurred. Please try again later.",
+    };
+  }
+};
+
+export const resetPassword = async (
+  payload: IResetPasswordReq
+): Promise<IApiResponse> => {
+  try {
+    const response = await apiCall({
+      ...apiresetPassword,
+      body: payload,
+    });
+
+    const resetPasswordResponse = await response.json();
+
+    if (!response.ok) {
+      return {
+        success: false,
+        message:
+          resetPasswordResponse.message || "Invalid OTP. Please try again.",
+      };
+    }
+
+    return resetPasswordResponse;
+  } catch (err) {
+    console.error("[resetPassword] Error:", err);
     return {
       success: false,
       message: "An unexpected error occurred. Please try again later.",
