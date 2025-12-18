@@ -3,12 +3,21 @@
 import { ApiType } from "@/constants/common";
 import { setAccessToken } from "@/lib/auth-helpers";
 import { apiCall } from "@/services/apiCall";
-import { apiLogin, apiSignUp } from "@/services/apiRoutes";
+import {
+  apiLogin,
+  apiSignUp,
+  apiForgotPassword,
+  apiVerifyOtp,
+} from "@/services/apiRoutes";
 import {
   ILoginReq,
   ILoginRes,
   ISignupReq,
   ISignUpRes,
+  IForgotPasswordReq,
+  IForgotPasswordRes,
+  IVerifyOtpReq,
+  IVerifyOtpRes,
 } from "@/types/auth/auth-api";
 
 export const signupUser = async (payload: ISignupReq): Promise<ISignUpRes> => {
@@ -16,7 +25,6 @@ export const signupUser = async (payload: ISignupReq): Promise<ISignUpRes> => {
     const response = await apiCall({
       ...apiSignUp,
       body: payload,
-      type: ApiType.UNAUTH,
     });
 
     const signupResponse = await response.json();
@@ -43,7 +51,6 @@ export const loginUser = async (payload: ILoginReq): Promise<ILoginRes> => {
     const response = await apiCall({
       ...apiLogin,
       body: payload,
-      type: ApiType.UNAUTH,
     });
     const loginResponse = await response.json();
 
@@ -71,6 +78,65 @@ export const loginUser = async (payload: ILoginReq): Promise<ILoginRes> => {
       message: "An unexpected error occurred. Please try again later.",
       access_token: "",
       user: null,
+    };
+  }
+};
+
+export const forgotPassword = async (
+  payload: IForgotPasswordReq
+): Promise<IForgotPasswordRes> => {
+  try {
+    const response = await apiCall({
+      ...apiForgotPassword,
+      body: payload,
+    });
+
+    const forgotPasswordResponse = await response.json();
+
+    if (!response.ok) {
+      return {
+        success: false,
+        message:
+          forgotPasswordResponse.message ||
+          "Failed to send reset link. Please try again.",
+      };
+    }
+
+    return forgotPasswordResponse;
+  } catch (err) {
+    console.error("[forgotPassword] Error:", err);
+    return {
+      success: false,
+      message: "An unexpected error occurred. Please try again later.",
+    };
+  }
+};
+
+export const verifyOtp = async (
+  payload: IVerifyOtpReq
+): Promise<IVerifyOtpRes> => {
+  try {
+    const response = await apiCall({
+      ...apiVerifyOtp,
+      body: payload,
+    });
+
+    const verifyOtpResponse = await response.json();
+
+    if (!response.ok) {
+      return {
+        success: false,
+        message:
+          verifyOtpResponse.message || "Invalid OTP. Please try again.",
+      };
+    }
+
+    return verifyOtpResponse;
+  } catch (err) {
+    console.error("[verifyOtp] Error:", err);
+    return {
+      success: false,
+      message: "An unexpected error occurred. Please try again later.",
     };
   }
 };

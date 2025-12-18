@@ -1,14 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { useFormik } from "formik";
 
+import { forgotPassword } from "@/actions/auth";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
+import { toaster } from "@/components/ui/toast";
 import { forgotPasswordSchema } from "@/lib/validationSchema";
 
 const ForgotPassword = () => {
+  const router = useRouter();
+
   const { values, handleChange, handleBlur, handleSubmit, errors, touched } =
     useFormik({
       initialValues: {
@@ -16,16 +21,15 @@ const ForgotPassword = () => {
       },
       validationSchema: forgotPasswordSchema,
       onSubmit: async (values) => {
-        console.log(values, "values");
-        //   const res = await signupUser({
-        //     name: values.fullName,
-        //     email: values.email,
-        //     password: values.password,
-        //   });
-        //   if (res?.success) {
-        //     toaster.success(res.message);
-        //     router.push("/auth/login");
-        //   }
+        const res = await forgotPassword({ email: values.email });
+
+        if (res.success) {
+          toaster.success(res.message);
+          // Navigate to OTP verification page
+          router.push("/auth/otp-verification");
+        } else {
+          toaster.error(res.message);
+        }
       },
     });
   return (
@@ -70,7 +74,7 @@ const ForgotPassword = () => {
 
           <p className="text-center text-sm mb-2">
             Already have an account?{" "}
-            <Link href="/auth/login" className="text-primary hover:underline">
+            <Link href="/login" className="text-primary hover:underline">
               Login
             </Link>
           </p>

@@ -94,10 +94,10 @@ export default function LoginPage() {
           </FormField>
         </div>
 
-        <p className="text-xs text-white mb-4">
+        <p className="mb-4 text-right">
           <Link
-            href="/auth/forgot_password"
-            className="text-primary cursor-pointer hover:underline"
+            href="/forgot-password"
+            className="text-primary text-xs cursor-pointer hover:underline"
           >
             Forgot Password?
           </Link>
@@ -111,7 +111,7 @@ export default function LoginPage() {
         <p className="text-center text-sm text-white mb-2">
           Don&apos;t have an account?{" "}
           <Link
-            href="/auth/signup"
+            href="/signup"
             className="text-primary cursor-pointer hover:underline"
           >
             SignUp

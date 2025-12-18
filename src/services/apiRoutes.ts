@@ -11,3 +11,15 @@ export const apiLogin = {
   method: HttpMethods.POST,
   type: ApiType.UNAUTH,
 };
+
+export const apiForgotPassword = {
+  url: "internal/auth/forgot-password",
+  method: HttpMethods.POST,
+  type: ApiType.UNAUTH,
+};
+
+export const apiVerifyOtp = {
+  url: "internal/auth/verify-otp",
+  method: HttpMethods.POST,
+  type: ApiType.UNAUTH,
+};

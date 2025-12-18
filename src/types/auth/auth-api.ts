@@ -21,3 +21,21 @@ export interface ILoginRes extends IApiResponse {
   access_token: string;
   user: unknown | null;
 }
+
+export type IForgotPasswordReq = {
+  email: string;
+};
+
+export interface IForgotPasswordRes extends IApiResponse {
+  success: boolean;
+  message: string;
+}
+
+export type IVerifyOtpReq = {
+  email: string;
+  otp: string;
+};
+
+export interface IVerifyOtpRes extends IApiResponse {
+  token?: string;
+}

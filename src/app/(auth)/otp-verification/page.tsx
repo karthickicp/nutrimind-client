@@ -1,19 +1,41 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 import { useFormik } from "formik";
 
+import { verifyOtp } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
+import { toaster } from "@/components/ui/toast";
 
 const OTPVerification = () => {
+  const router = useRouter();
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
 
   const { values, errors, touched, setFieldValue, handleSubmit } = useFormik({
     initialValues: {
-      otp: ["", "", "", ""],
+      otp: ["", "", "", "", "", ""],
     },
-    onSubmit(values) {},
+    onSubmit: async (values) => {
+      const otpString = values.otp.join("");
+
+      // TODO: Replace with actual email from URL params or session storage
+      const dummyEmail = "user@example.com";
+
+      const res = await verifyOtp({
+        email: dummyEmail,
+        otp: otpString,
+      });
+
+      if (res.success) {
+        toaster.success(res.message);
+        // Navigate to reset password page
+        router.push("/auth/reset-password");
+      } else {
+        toaster.error(res.message);
+      }
+    },
   });
 
   const handleOtpChange = (value: string, index: number) => {
@@ -45,7 +67,7 @@ const OTPVerification = () => {
       >
         <div className="bg-[#00b46e] py-6 text-center">
           <h1 className="text-2xl font-semibold text-white">
-            Enter 4 Digit Code
+            Enter 6 Digit Code
           </h1>
 
           <p className="text-sm text-white opacity-80 mt-1">
@@ -64,9 +86,8 @@ const OTPVerification = () => {
                 ref={(el) => {
                   inputRefs.current[index] = el;
                 }}
-                className={`w-12 h-12 text-center text-2xl rounded-lg bg-black border ${
-                  errors.otp ? "border-red-500" : "border-gray-700"
-                } focus:outline-none focus:border-green-400 text-white`}
+                className={`w-12 h-12 text-center text-2xl rounded-lg bg-black border ${errors.otp ? "border-red-500" : "border-gray-700"
+                  } focus:outline-none focus:border-green-400 text-white`}
                 maxLength={1}
               />
             ))}

@@ -120,7 +120,7 @@ export default function ResetFlow() {
               You can now use your new password to login.
             </p>
 
-            <Link href="/auth/login" className="block w-full">
+            <Link href="/login" className="block w-full">
               <Button className="btn-primary w-full py-3 h-15">Continue</Button>
             </Link>
           </div>

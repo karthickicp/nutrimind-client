@@ -37,7 +37,7 @@ export default function SignupPage() {
       });
       if (res.success) {
         toaster.success(res.message);
-        router.push("/auth/login");
+        router.push("/login");
       } else {
         toaster.error(res.message);
       }
@@ -152,7 +152,7 @@ export default function SignupPage() {
 
         <p className="text-center text-sm text-white mb-2">
           Already have an account?{" "}
-          <Link href="/auth/login" className="text-primary hover:underline">
+          <Link href="/login" className="text-primary hover:underline">
             Login
           </Link>
         </p>
