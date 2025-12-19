@@ -1,6 +1,6 @@
 "use server";
 
-import { getTempAccessToken, setAccessToken, setTempAccessTOken } from "@/lib/auth-helpers";
+import { deleteCookie, getCookie, setCookie } from "@/lib/auth-helpers";
 import { apiCall } from "@/services/apiCall";
 import {
   apiLogin,
@@ -69,7 +69,7 @@ export const loginUser = async (payload: ILoginReq): Promise<ILoginRes> => {
 
     // Store access token securely
     if (loginResponse.access_token) {
-      await setAccessToken(loginResponse.access_token);
+      await setCookie("nutri-accessToken", loginResponse.access_token);
     }
 
     return loginResponse;
@@ -132,7 +132,7 @@ export const verifyOtp = async (
         message: verifyOtpResponse.message || "Invalid OTP. Please try again.",
       };
     }
-    await setTempAccessTOken(verifyOtpResponse.token);
+    await setCookie("temp-nutri-accessToken", verifyOtpResponse.token);
     return verifyOtpResponse;
   } catch (err) {
     console.error("[verifyOtp] Error:", err);
@@ -148,7 +148,7 @@ export const resetPassword = async (
   payload: IResetPasswordReq
 ): Promise<IApiResponse> => {
   try {
-    const token = await getTempAccessToken();
+    const token = await getCookie("temp-nutri-accessToken");
     const response = await apiCall({
       ...apiResetPassword,
       body: payload,
@@ -166,7 +166,7 @@ export const resetPassword = async (
           resetPasswordResponse.message || "Invalid OTP. Please try again.",
       };
     }
-
+    await deleteCookie("temp-nutri-accessToken");
     return resetPasswordResponse;
   } catch (err) {
     console.error("[resetPassword] Error:", err);

@@ -69,7 +69,7 @@ const ForgotPassword = () => {
           <FormSubmitButton
             type="submit"
             buttonText="Send OTP"
-            className="btn-primary w-full py-3 rounded-lg bg-[#b6ffe4] text-black font-semibold mb-4 hover:bg-[#9effd6]"
+            className="btn-primary w-full py-3 rounded-lg bg-[#b6ffe4] text-black font-semibold mb-4 hover:bg-[#9effd6] h-15"
           />
 
           <p className="text-center text-sm mb-2">

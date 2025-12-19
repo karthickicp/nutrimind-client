@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -19,6 +19,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [validationError, setValidationError] = useState("");
 
   const { values, handleChange, handleSubmit, errors, touched } = useFormik({
     initialValues: {
@@ -26,20 +27,25 @@ export default function LoginPage() {
       password: "",
     },
     validationSchema: loginSchema,
-    // onSubmit: async (values) => {
-    //   const res = await loginUser(values);
-    //   if (res.success) {
-    //     toaster.success(res.message);
-    //     router.push("/home");
-    //     router.refresh();
-    //   } else {
-    //     toaster.error(res.message);
-    //   }
-    // },
-    onSubmit: (values) => {
-      router.push("/")
+    onSubmit: async (values) => {
+      const res = await loginUser(values);
+      if (res.success) {
+        toaster.success(res.message);
+        router.push("/home");
+        router.refresh();
+      } else {
+        setValidationError(res.message);
+        toaster.error(res.message);
+      }
     },
+    // onSubmit: (values) => {
+    //   router.push("/")
+    // },
   });
+
+  useEffect(() => {
+    setValidationError("")
+  }, [values])
 
   return (
     <div
@@ -96,6 +102,8 @@ export default function LoginPage() {
             )}
           </FormField>
         </div>
+
+        {validationError && <div className="err-msg">{validationError}</div>}
 
         <p className="mb-4 text-right">
           <Link

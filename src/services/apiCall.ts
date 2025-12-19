@@ -1,7 +1,7 @@
 "use server";
 
 import { ApiType } from "@/constants/common";
-import { getAccessToken } from "@/lib/auth-helpers";
+import { getCookie } from "@/lib/auth-helpers";
 import { IApiCallRequest } from "@/types/common";
 
 export const apiCall = async ({
@@ -20,7 +20,7 @@ export const apiCall = async ({
       ? process.env.NEXT_PUBLIC_AUTH_API_BASE_URL
       : process.env.NEXT_PUBLIC_UNAUTH_API_BASE_URL;
 
-  const token = await getAccessToken();
+  const token = await getCookie("nutri-accessToken");
   let apiPath = `${apiBaseUrl}${url}`;
   if (params) {
     apiPath += `?${new URLSearchParams(params)}`;

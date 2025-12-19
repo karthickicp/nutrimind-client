@@ -16,26 +16,20 @@ const COOKIE_OPTIONS = {
  * Get the access token from cookies
  * @returns The access token or null if not found
  */
-export async function getAccessToken(): Promise<string | null> {
+
+export async function getCookie(value: string): Promise<string | null> {
   const cookieStore = await cookies();
-  return cookieStore.get(TOKEN_NAME)?.value || null;
+  return cookieStore.get(value)?.value || null;
 }
 
-/**
- * Set the access token in cookies with secure flags
- * @param token - The access token to store
- */
-export async function setAccessToken(token: string): Promise<void> {
+export async function setCookie(name: string, value: string): Promise<void> {
   const cookieStore = await cookies();
-  cookieStore.set(TOKEN_NAME, token, COOKIE_OPTIONS);
+  cookieStore.set(name, value, COOKIE_OPTIONS);
 }
 
-/**
- * Remove the access token from cookies
- */
-export async function clearAccessToken(): Promise<void> {
+export async function deleteCookie(name: string): Promise<void> {
   const cookieStore = await cookies();
-  cookieStore.delete(TOKEN_NAME);
+  cookieStore.delete(name);
 }
 
 /**
@@ -43,18 +37,6 @@ export async function clearAccessToken(): Promise<void> {
  * @returns true if access token exists, false otherwise
  */
 export async function isAuthenticated(): Promise<boolean> {
-  const token = await getAccessToken();
+  const token = await getCookie(TOKEN_NAME);
   return !!token;
-}
-
-
-export async function setTempAccessTOken(token: string): Promise<void> {
-  const cookieStore = await cookies();
-  console.log(token, "cookieStore token")
-   cookieStore.set("temp-nutrimind-accessToken", token, COOKIE_OPTIONS);
-}
-
-export async function getTempAccessToken(): Promise<string | null> {
-  const cookieStore = await cookies();
-  return cookieStore.get("temp-nutrimind-accessToken")?.value || null;
 }
