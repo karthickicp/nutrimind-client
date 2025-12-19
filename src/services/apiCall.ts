@@ -20,7 +20,6 @@ export const apiCall = async ({
       ? process.env.NEXT_PUBLIC_AUTH_API_BASE_URL
       : process.env.NEXT_PUBLIC_UNAUTH_API_BASE_URL;
 
-  console.log(apiBaseUrl, "apiBaseUrl");
   const token = await getAccessToken();
   let apiPath = `${apiBaseUrl}${url}`;
   if (params) {

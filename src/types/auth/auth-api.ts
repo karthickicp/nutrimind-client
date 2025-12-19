@@ -37,9 +37,10 @@ export type IVerifyOtpReq = {
 };
 
 export interface IVerifyOtpRes extends IApiResponse {
-  token?: string;
+  token: string | null;
 }
 
 export type IResetPasswordReq = {
-  password: string;
+  new_password: string;
+  confirm_password: string;
 };

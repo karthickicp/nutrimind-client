@@ -44,7 +44,6 @@ export default function TrainerRegistrationStepOne() {
   function handleContinue(e: React.FormEvent) {
     e.preventDefault();
     // Implement validation / submit flow
-    console.log({ fullName, email, phone, password, otp: otp.join("") });
     alert("Continue clicked — hook up submit logic");
   }
 

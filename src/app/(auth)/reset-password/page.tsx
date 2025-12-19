@@ -24,7 +24,8 @@ export default function ResetFlow() {
       validationSchema: resetPasswordNewPasswordSchema,
       onSubmit: async (values) => {
         const res = await resetPassword({
-          password: values.password,
+          new_password: values.password,
+          confirm_password: values.confirmPassword,
         });
         if (res.success) {
           setStep(2);

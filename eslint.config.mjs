@@ -20,7 +20,13 @@ const eslintConfig = defineConfig([
       "prettier/prettier": "warn",
 
       // Console warnings
-      "no-console": "warn",
+      "no-console": ["error", {
+            "allow": [
+                "warn",
+                "error",
+                "log"
+            ]
+        }],
 
       // Turn off 'any' warning
       "@typescript-eslint/no-explicit-any": "off",

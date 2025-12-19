@@ -27,6 +27,8 @@ const OTPVerification = () => {
         otp: otpString,
       });
       if (res.success) {
+        if (res.token) {
+        }
         toaster.success(res.message);
         // Navigate to reset password page
         router.push("/reset-password");
@@ -84,9 +86,8 @@ const OTPVerification = () => {
                 ref={(el) => {
                   inputRefs.current[index] = el;
                 }}
-                className={`w-12 h-12 text-center text-2xl rounded-lg bg-black border ${
-                  errors.otp ? "border-red-500" : "border-gray-700"
-                } focus:outline-none focus:border-green-400 text-white`}
+                className={`w-12 h-12 text-center text-2xl rounded-lg bg-black border ${errors.otp ? "border-red-500" : "border-gray-700"
+                  } focus:outline-none focus:border-green-400 text-white`}
                 maxLength={1}
               />
             ))}

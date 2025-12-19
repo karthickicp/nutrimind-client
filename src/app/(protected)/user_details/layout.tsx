@@ -22,13 +22,13 @@ export default function UserDetailsRootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${popins.variable} antialiased dark`}
-        suppressHydrationWarning
-      >
-        <UserDetailsProvider>{children}</UserDetailsProvider>
-      </body>
-    </html>
+    // <html lang="en">
+    //   <body
+    //     className={`${popins.variable} antialiased dark`}
+    //     suppressHydrationWarning
+    //   >
+    <UserDetailsProvider>{children}</UserDetailsProvider>
+    //   </body>
+    // </html>
   );
 }

@@ -35,14 +35,10 @@ export const Header = () => {
               variant="outline"
               className="btn-outline-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]"
             >
-              <a href="/login" className="hover:underline">
-                Login{" "}
-              </a>
-              /
-              <a href="/signup" className="hover:underline">
-                SignUp
-              </a>
-            </Button>
+              <Link href={"/login"}>
+                Login / SignUp
+              </Link>
+            </Button >
             <Button className="btn-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]">
               Join as Trainer / Nut
             </Button>
@@ -59,16 +55,16 @@ export const Header = () => {
               <span className="block w-5 h-0.5 bg-white mb-1" />
               <span className="block w-5 h-0.5 bg-white" />
             </button>
-          </div>
-        </div>
-      </header>
+          </div >
+        </div >
+      </header >
 
       {/* Overlay + sliding menu */}
       {/* overlay */}
       <div
         className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${isMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
           }`}
         onClick={() => setIsMenuOpen(false)}
       />

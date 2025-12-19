@@ -1,14 +1,13 @@
 "use server";
 
-import { ApiType } from "@/constants/common";
-import { setAccessToken } from "@/lib/auth-helpers";
+import { getTempAccessToken, setAccessToken, setTempAccessTOken } from "@/lib/auth-helpers";
 import { apiCall } from "@/services/apiCall";
 import {
   apiLogin,
   apiSignUp,
   apiForgotPassword,
   apiVerifyOtp,
-  apiresetPassword,
+  apiResetPassword,
 } from "@/services/apiRoutes";
 import {
   ILoginReq,
@@ -129,15 +128,17 @@ export const verifyOtp = async (
     if (!response.ok) {
       return {
         success: false,
+        token: verifyOtpResponse.token,
         message: verifyOtpResponse.message || "Invalid OTP. Please try again.",
       };
     }
-
+    await setTempAccessTOken(verifyOtpResponse.token);
     return verifyOtpResponse;
   } catch (err) {
     console.error("[verifyOtp] Error:", err);
     return {
       success: false,
+      token: null,
       message: "An unexpected error occurred. Please try again later.",
     };
   }
@@ -147,9 +148,13 @@ export const resetPassword = async (
   payload: IResetPasswordReq
 ): Promise<IApiResponse> => {
   try {
+    const token = await getTempAccessToken();
     const response = await apiCall({
-      ...apiresetPassword,
+      ...apiResetPassword,
       body: payload,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     const resetPasswordResponse = await response.json();

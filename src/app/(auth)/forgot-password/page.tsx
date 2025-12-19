@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
 import { toaster } from "@/components/ui/toast";
 import { forgotPasswordSchema } from "@/lib/validationSchema";
+import { FormSubmitButton } from "@/components/common/FormSubmitButton";
 
 const ForgotPassword = () => {
   const router = useRouter();
@@ -65,12 +66,11 @@ const ForgotPassword = () => {
             </FormField>
           </div>
 
-          <button
+          <FormSubmitButton
             type="submit"
-            className="w-full py-3 rounded-lg bg-[#b6ffe4] text-black font-semibold mb-4 hover:bg-[#9effd6] transition-colors"
-          >
-            Send OTP
-          </button>
+            buttonText="Send OTP"
+            className="btn-primary w-full py-3 rounded-lg bg-[#b6ffe4] text-black font-semibold mb-4 hover:bg-[#9effd6]"
+          />
 
           <p className="text-center text-sm mb-2">
             Already have an account?{" "}

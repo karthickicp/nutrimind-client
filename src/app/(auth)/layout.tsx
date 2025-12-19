@@ -21,27 +21,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${popins.variable} antialiased dark`}
-        suppressHydrationWarning
-      >
-        <div className="min-h-screen w-full flex items-center justify-center relative antialiased dark">
-          <div className="absolute left-10 top-1/2 -translate-y-1/2 text-6xl opacity-30">
-            🔥
-          </div>
-          <div className="absolute right-10 top-1/2 -translate-y-1/2 text-6xl opacity-30">
-            💪
-          </div>
-          <div className="absolute left-20 bottom-10 text-6xl opacity-30">
-            🏋️‍♂️
-          </div>
-          <div className="absolute right-20 bottom-10 text-6xl opacity-30">
-            🥗
-          </div>
-          {children}
-        </div>
-      </body>
-    </html>
+
+    <div className="min-h-screen w-full flex items-center justify-center relative antialiased dark">
+      <div className="absolute left-10 top-1/2 -translate-y-1/2 text-6xl opacity-30">
+        🔥
+      </div>
+      <div className="absolute right-10 top-1/2 -translate-y-1/2 text-6xl opacity-30">
+        💪
+      </div>
+      <div className="absolute left-20 bottom-10 text-6xl opacity-30">
+        🏋️‍♂️
+      </div>
+      <div className="absolute right-20 bottom-10 text-6xl opacity-30">
+        🥗
+      </div>
+      {children}
+    </div>
   );
 }

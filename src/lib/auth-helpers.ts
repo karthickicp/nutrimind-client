@@ -46,3 +46,15 @@ export async function isAuthenticated(): Promise<boolean> {
   const token = await getAccessToken();
   return !!token;
 }
+
+
+export async function setTempAccessTOken(token: string): Promise<void> {
+  const cookieStore = await cookies();
+  console.log(token, "cookieStore token")
+   cookieStore.set("temp-nutrimind-accessToken", token, COOKIE_OPTIONS);
+}
+
+export async function getTempAccessToken(): Promise<string | null> {
+  const cookieStore = await cookies();
+  return cookieStore.get("temp-nutrimind-accessToken")?.value || null;
+}

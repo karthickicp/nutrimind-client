@@ -26,15 +26,18 @@ export default function LoginPage() {
       password: "",
     },
     validationSchema: loginSchema,
-    onSubmit: async (values) => {
-      const res = await loginUser(values);
-      if (res.success) {
-        toaster.success(res.message);
-        router.push("/home");
-        router.refresh();
-      } else {
-        toaster.error(res.message);
-      }
+    // onSubmit: async (values) => {
+    //   const res = await loginUser(values);
+    //   if (res.success) {
+    //     toaster.success(res.message);
+    //     router.push("/home");
+    //     router.refresh();
+    //   } else {
+    //     toaster.error(res.message);
+    //   }
+    // },
+    onSubmit: (values) => {
+      router.push("/")
     },
   });
 
