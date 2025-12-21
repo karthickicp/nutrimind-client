@@ -147,7 +147,7 @@ export default function DoctorListPage() {
                 className="
                   w-full rounded-xl bg-[#A9A7A7] text-white placeholder:text-white
                   border-none min-h-15 pl-4 pr-10 text-sm font-medium
-                  focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-0
+                  focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0
                 "
               />
               <Search
@@ -186,7 +186,7 @@ export default function DoctorListPage() {
 
                     <div className="flex items-center gap-2 lg:gap-6">
                       <Heart size={16} className="text-red-500" />
-                      <span className="flex items-center gap-1 rounded-full bg-emerald-500 px-2 py-0.5 text-xs font-semibold text-black">
+                      <span className="flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 text-xs font-semibold text-black">
                         <Star size={14} className="fill-black text-black" />
                         {doc.rating}
                       </span>
@@ -217,7 +217,7 @@ export default function DoctorListPage() {
 
                 {/* CTA – white button */}
                 <div className="ml-auto shrink-0">
-                  <Button className="flex items-center gap-2 rounded-md bg-emerald-500 text-white px-4 py-2 text-sm font-semibold shadow hover:bg-emerald-600 min-w-[120px]">
+                  <Button className="flex items-center gap-2 rounded-md bg-primary text-white px-4 py-2 text-sm font-semibold shadow hover:bg-emerald-600 min-w-[120px]">
                     <Phone size={18} />
                     <span>{doc.ctaLabel}</span>
                   </Button>
@@ -225,7 +225,7 @@ export default function DoctorListPage() {
               </div>
 
               {idx !== DOCTORS.length - 1 && (
-                <div className="h-px w-full bg-emerald-500" />
+                <div className="h-px w-full bg-primary" />
               )}
             </div>
           ))}

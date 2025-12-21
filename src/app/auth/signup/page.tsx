@@ -1,19 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useFormik } from "formik";
 import { signupSchema } from "@/lib/validationSchema";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
+import Link from "next/link";
+import { FormSubmitButton } from "@/components/common/FormSubmitButton";
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const { values, handleChange, handleSubmit, errors, touched } = useFormik({
     initialValues: {
       fullName: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
     validationSchema: signupSchema,
     onSubmit: (values) => {
@@ -42,10 +46,10 @@ export default function SignupPage() {
               placeholder="Enter your full name"
               value={values.fullName}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-12"
+              className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-15"
             />
             {touched.fullName && errors.fullName && (
-              <div className="text-red-500 text-xs mt-1">{errors.fullName}</div>
+              <div className="err-msg">{errors.fullName}</div>
             )}
           </FormField>
         </div>
@@ -58,10 +62,10 @@ export default function SignupPage() {
               placeholder="Enter your email address"
               value={values.email}
               onChange={handleChange}
-              className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-12"
+              className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-15"
             />
             {touched.email && errors.email && (
-              <div className="text-red-500 text-xs mt-1">{errors.email}</div>
+              <div className="err-msg">{errors.email}</div>
             )}
           </FormField>
         </div>
@@ -75,7 +79,7 @@ export default function SignupPage() {
                 placeholder="Enter your password"
                 value={values.password}
                 onChange={handleChange}
-                className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-12"
+                className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-15"
               />
               <button
                 type="button"
@@ -86,7 +90,32 @@ export default function SignupPage() {
               </button>
             </div>
             {touched.password && errors.password && (
-              <div className="text-red-500 text-xs mt-1">{errors.password}</div>
+              <div className="err-msg">{errors.password}</div>
+            )}
+          </FormField>
+        </div>
+
+        <div className="mb-4">
+          <FormField label="Confirm Password" className="text-white">
+            <div className="relative">
+              <Input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                placeholder="Re-enter your password"
+                value={values.confirmPassword}
+                onChange={handleChange}
+                className="w-full p-3 rounded-lg bg-black text-white placeholder-gray-400 border border-gray-700 h-15"
+              />
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-white opacity-70 hover:opacity-100 transition-opacity"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+            {touched.confirmPassword && errors.confirmPassword && (
+              <div className="err-msg">{errors.confirmPassword}</div>
             )}
           </FormField>
         </div>
@@ -96,18 +125,17 @@ export default function SignupPage() {
           and <u>Cookie Use</u>
         </p>
 
-        <button
+        <FormSubmitButton
           type="submit"
-          className="w-full py-3 rounded-lg bg-[#b6ffe4] text-black font-semibold mb-4 hover:bg-[#9effd6] transition-colors"
-        >
-          Create an Account
-        </button>
+          className="w-full py-3 rounded-lg bg-[#b6ffe4] text-black font-semibold mb-4 hover:bg-[#9effd6] h-15"
+          buttonText="Create an Account"
+        />
 
         <p className="text-center text-sm text-white mb-2">
           Already have an account?{" "}
-          <span className="text-green-400 cursor-pointer">
-            <a href="/auth/login">Login</a>
-          </span>
+          <Link href="/auth/login" className="text-primary hover:underline">
+            Login
+          </Link>
         </p>
 
         <p className="text-center text-gray-400 mb-3">OR</p>

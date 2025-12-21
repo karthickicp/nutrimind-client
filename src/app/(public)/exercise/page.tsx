@@ -39,7 +39,7 @@ export default function TrainerConnectPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* TOP BAR */}
-      <header className="border-b border-emerald-500/60 px-4 py-4 md:px-8">
+      <header className="border-b border-primary/60 px-4 py-4 md:px-8">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           {/* Back arrow */}
           <button
@@ -54,7 +54,7 @@ export default function TrainerConnectPage() {
             <span className="text-xl md:text-2xl font-semibold">
               Trainer Connect
             </span>
-            <span className="mt-1 h-[3px] w-24 rounded-full bg-emerald-500" />
+            <span className="mt-1 h-[3px] w-24 rounded-full bg-primary" />
           </div>
         </div>
       </header>
@@ -87,7 +87,7 @@ export default function TrainerConnectPage() {
 
                 <div className="flex-1 w-full">
                   <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <span className="inline-flex items-center rounded-md bg-emerald-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-black">
+                    <span className="inline-flex items-center rounded-md bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-wide text-black">
                       {ex.dayLabel}
                     </span>
                     <h2 className="text-2xl md:text-3xl font-bold leading-tight">
@@ -113,7 +113,7 @@ export default function TrainerConnectPage() {
               </article>
 
               {idx !== EXERCISES.length - 1 && (
-                <div className="mt-8 h-[2px] w-full bg-emerald-500" />
+                <div className="mt-8 h-[2px] w-full bg-primary" />
               )}
             </div>
           ))}

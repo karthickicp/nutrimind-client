@@ -85,7 +85,7 @@ export const TopBanner = () => {
         {/* LEFT SIDE CONTENT (unchanged) */}
         <div className="space-y-6 lg:space-y-8">
           <div className="inline-flex items-center gap-2 border-none rounded-full px-2 py-2 bg-white/10">
-            <span className="bg-emerald-500 text-black px-2 py-0.5 rounded-full text-xs">
+            <span className="bg-primary text-black px-2 py-0.5 rounded-full text-xs">
               NEW
             </span>
             <span className="text-sm text-gray-300 mx-2">
