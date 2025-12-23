@@ -1,11 +1,12 @@
 "use client";
 
 import { useFormik } from "formik";
-import FormLayout from "../../layout/formLayout";
-import { Input } from "@/components/ui/input";
 
-import { FormField } from "@/components/ui/label";
 import Select from "@/components/common/selectBox";
+import { Input } from "@/components/ui/input";
+import { FormField } from "@/components/ui/label";
+
+import FormLayout from "../../layout/formLayout";
 
 export const dropdownBoxOptions = [
   { label: "Male", value: "male" },

@@ -3,10 +3,11 @@
 
 import { useFormik } from "formik";
 
+import Select from "@/components/common/selectBox";
+import { fatLossSchema } from "@/lib/validationSchema";
+
 import FormLayout from "../../layout/formLayout";
 import { dropdownBoxOptions } from "../diet_planner/page";
-import { fatLossSchema } from "@/lib/validationSchema";
-import Select from "@/components/common/selectBox";
 
 type FatLossFormikDataProps = {
   currentWeight: object | null;

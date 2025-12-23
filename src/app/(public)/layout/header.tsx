@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -34,14 +35,10 @@ export const Header = () => {
               variant="outline"
               className="btn-outline-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]"
             >
-              <a href="/auth/login" className="hover:underline">
-                Login{" "}
-              </a>
-              /
-              <a href="/auth/signup" className="hover:underline">
-                SignUp
-              </a>
-            </Button>
+              <Link href={"/login"}>
+                Login / SignUp
+              </Link>
+            </Button >
             <Button className="btn-primary h-auto px-4 py-4 hidden md:inline-flex min-w-[150px]">
               Join as Trainer / Nut
             </Button>
@@ -58,27 +55,25 @@ export const Header = () => {
               <span className="block w-5 h-0.5 bg-white mb-1" />
               <span className="block w-5 h-0.5 bg-white" />
             </button>
-          </div>
-        </div>
-      </header>
+          </div >
+        </div >
+      </header >
 
       {/* Overlay + sliding menu */}
       {/* overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
-          isMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${isMenuOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+          }`}
         onClick={() => setIsMenuOpen(false)}
       />
 
       {/* drawer */}
       <aside
         className={`fixed inset-y-0 right-0 z-50 w-72 max-w-full bg-black border-l border-white/10
-        transform transition-transform duration-300 ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
           <div className="text-lg font-semibold">Menu</div>
@@ -118,11 +113,11 @@ export const Header = () => {
               className="btn-outline-primary w-full h-auto py-3 px-4"
               onClick={() => setIsMenuOpen(false)}
             >
-              <a href="/auth/login" className="hover:underline">
+              <a href="/login" className="hover:underline">
                 Login{" "}
               </a>
               /
-              <a href="/auth/signup" className="hover:underline">
+              <a href="/signup" className="hover:underline">
                 SignUp
               </a>
             </Button>

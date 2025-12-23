@@ -1,4 +1,5 @@
 import React from "react";
+
 import DoctorListPage from "../doctors/page";
 
 const Page = () => {

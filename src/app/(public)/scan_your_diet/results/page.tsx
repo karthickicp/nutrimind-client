@@ -1,7 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Heart } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
+import { ArrowLeft, Heart } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 
 const macros = [
@@ -106,7 +108,7 @@ export default function ResultsPage() {
                 <div
                   className={`absolute inset-0 rounded-full border-4 ${m.borderColor} border-t-transparent -rotate-45`}
                   style={{ opacity: 0.8 }}
-                ></div>
+                />
 
                 <span className="text-gray-400 text-xs">{m.label}</span>
                 <span className={`text-lg font-bold ${m.color}`}>

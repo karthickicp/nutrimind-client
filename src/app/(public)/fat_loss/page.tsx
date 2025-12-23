@@ -1,7 +1,8 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Clock, Flame } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
 
 type Exercise = {
   id: number;

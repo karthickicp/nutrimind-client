@@ -1,5 +1,11 @@
 "use client";
 
+import { useState, useRef } from "react";
+
+import Link from "next/link";
+
+import { ArrowLeft, Heart, X, FolderUp, FileText } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,9 +15,6 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { ArrowLeft, Heart, X, FolderUp, FileText } from "lucide-react";
-import Link from "next/link";
-import { useState, useRef } from "react";
 
 export default function ScanYourDietPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -168,11 +171,11 @@ export default function ScanYourDietPage() {
                   </h3>
 
                   <div className="flex items-center w-full max-w-xs gap-4 mb-6">
-                    <div className="h-[1px] bg-gray-700 flex-1"></div>
+                    <div className="h-[1px] bg-gray-700 flex-1" />
                     <span className="text-gray-500 uppercase text-sm tracking-wider">
                       OR
                     </span>
-                    <div className="h-[1px] bg-gray-700 flex-1"></div>
+                    <div className="h-[1px] bg-gray-700 flex-1" />
                   </div>
 
                   <input

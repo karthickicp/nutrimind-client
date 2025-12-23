@@ -14,13 +14,13 @@ export const Footer = () => {
         <div className="flex justify-center gap-4 md:gap-6 lg:gap-8">
           <div>
             <img
-              src={"/images/home/play_store.png"}
+              src="/images/home/play_store.png"
               alt="Download on App Store and Google Play"
             />
           </div>
           <div>
             <img
-              src={"/images/home/app_store.png"}
+              src="/images/home/app_store.png"
               alt="Download on App Store and Google Play"
             />
           </div>

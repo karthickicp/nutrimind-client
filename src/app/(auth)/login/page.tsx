@@ -1,16 +1,25 @@
 "use client";
 
-import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import { useFormik } from "formik";
-import { loginSchema } from "@/lib/validationSchema";
+import { Eye, EyeOff } from "lucide-react";
+
+import { loginUser } from "@/actions/auth";
+import { FormSubmitButton } from "@/components/common/FormSubmitButton";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
-import { FormSubmitButton } from "@/components/common/FormSubmitButton";
-import Link from "next/link";
+import { toaster } from "@/components/ui/toast";
+import { loginSchema } from "@/lib/validationSchema";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState(false);
+  const [validationError, setValidationError] = useState("");
 
   const { values, handleChange, handleSubmit, errors, touched } = useFormik({
     initialValues: {
@@ -18,10 +27,25 @@ export default function LoginPage() {
       password: "",
     },
     validationSchema: loginSchema,
-    onSubmit: (values) => {
-      console.log("Login Values:", values);
+    onSubmit: async (values) => {
+      const res = await loginUser(values);
+      if (res.success) {
+        toaster.success(res.message);
+        router.push("/home");
+        router.refresh();
+      } else {
+        setValidationError(res.message);
+        toaster.error(res.message);
+      }
     },
+    // onSubmit: (values) => {
+    //   router.push("/")
+    // },
   });
+
+  useEffect(() => {
+    setValidationError("")
+  }, [values])
 
   return (
     <div
@@ -68,7 +92,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-white opacity-70 hover:opacity-100 transition-opacity"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowPassword((prev) => !prev)}
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
@@ -79,10 +103,15 @@ export default function LoginPage() {
           </FormField>
         </div>
 
-        <p className="text-xs text-white mb-4">
-          By signing up you agree to our <u className="cursor-pointer">Terms</u>
-          , <u className="cursor-pointer">Privacy Policy</u>, and{" "}
-          <u className="cursor-pointer">Cookie Use</u>
+        {validationError && <div className="err-msg">{validationError}</div>}
+
+        <p className="mb-4 text-right">
+          <Link
+            href="/forgot-password"
+            className="text-primary text-xs cursor-pointer hover:underline"
+          >
+            Forgot Password?
+          </Link>
         </p>
 
         <FormSubmitButton
@@ -93,7 +122,7 @@ export default function LoginPage() {
         <p className="text-center text-sm text-white mb-2">
           Don&apos;t have an account?{" "}
           <Link
-            href="/auth/signup"
+            href="/signup"
             className="text-primary cursor-pointer hover:underline"
           >
             SignUp

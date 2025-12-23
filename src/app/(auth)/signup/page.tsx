@@ -1,14 +1,23 @@
 "use client";
+
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import { useFormik } from "formik";
-import { signupSchema } from "@/lib/validationSchema";
+import { Eye, EyeOff } from "lucide-react";
+
+import { signupUser } from "@/actions/auth";
+import { FormSubmitButton } from "@/components/common/FormSubmitButton";
 import { Input } from "@/components/ui/input";
 import { FormField } from "@/components/ui/label";
-import Link from "next/link";
-import { FormSubmitButton } from "@/components/common/FormSubmitButton";
+import { toaster } from "@/components/ui/toast";
+import { signupSchema } from "@/lib/validationSchema";
 
 export default function SignupPage() {
+  const router = useRouter();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -20,8 +29,18 @@ export default function SignupPage() {
       confirmPassword: "",
     },
     validationSchema: signupSchema,
-    onSubmit: (values) => {
-      console.log("Signup Values:", values);
+    onSubmit: async (values) => {
+      const res = await signupUser({
+        name: values.fullName,
+        email: values.email,
+        password: values.password,
+      });
+      if (res.success) {
+        toaster.success(res.message);
+        router.push("/login");
+      } else {
+        toaster.error(res.message);
+      }
     },
   });
 
@@ -133,7 +152,7 @@ export default function SignupPage() {
 
         <p className="text-center text-sm text-white mb-2">
           Already have an account?{" "}
-          <Link href="/auth/login" className="text-primary hover:underline">
+          <Link href="/login" className="text-primary hover:underline">
             Login
           </Link>
         </p>

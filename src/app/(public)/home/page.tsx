@@ -1,10 +1,10 @@
 import { Header } from "../layout/header";
-import { TopBanner } from "./_subPages/topBanner";
+import { Footer } from "./_subPages/footer";
+import { FooterBanner } from "./_subPages/footerBanner";
+import { HowItWorks } from "./_subPages/howItWorks";
 import { RealtimeLearning } from "./_subPages/realtimeLearning";
 import { Testimonials } from "./_subPages/testimonials";
-import { HowItWorks } from "./_subPages/howItWorks";
-import { FooterBanner } from "./_subPages/footerBanner";
-import { Footer } from "./_subPages/footer";
+import { TopBanner } from "./_subPages/topBanner";
 import { TrainersPortal } from "./_subPages/trainersPortal";
 
 const HomePage = () => {
